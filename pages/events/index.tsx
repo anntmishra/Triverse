@@ -277,6 +277,18 @@ function App() {
           content="Explore the exciting tech events at TRIVERSE 2.0"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Add favicon links for the triangle logo */}
+        <link
+          rel="icon"
+          href="/assets/triangle-logo.svg"
+          type="image/svg+xml"
+        />
+        <link rel="apple-touch-icon" href="/assets/triangle-logo-192.png" />
+        <link rel="shortcut icon" href="/assets/triangle-logo.ico" />
+
+        {/* Add a web app manifest for PWA support */}
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <div className="container" ref={containerRef}>

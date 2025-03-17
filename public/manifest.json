@@ -1,0 +1,23 @@
+{
+  "name": "Triverse 2.0",
+  "short_name": "Triverse",
+  "description": "Bennett University's flagship tech fest",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#280f3c",
+  "theme_color": "#4A148C",
+  "icons": [
+    {
+      "src": "/assets/triangle-logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/triangle-logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
