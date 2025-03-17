@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import Head from "next/head";
 
-
+import PixelCard from "../../components/pixelcard"; // Ensure PixelCard is imported
 import Footer from "@/components/Footer";
 
 // Team data structure
@@ -239,7 +239,22 @@ const TeamPage = () => {
           )}
         </div>
 
-       
+        {/* Teams Grid */}
+        <div className="teams-grid">
+          {teams.map((team) => (
+            <div key={team.id} className="team-card-container">
+              <PixelCard
+                onClick={() => handleTeamClick(team.id)}
+                className={`team-card ${
+                  activeTeam === team.id ? "active" : ""
+                }`}
+              >
+                <div className="team-card-content">
+                  <div className="team-header">
+                    <div className="team-icon">{team.icon}</div>
+                    <h3 className="team-name">{team.name}</h3>
+                  </div>
+                  <p className="team-description">{team.description}</p>
 
                   {/* Only show this when team is active */}
                   {activeTeam === team.id && (
@@ -280,7 +295,8 @@ const TeamPage = () => {
           ))}
         </div>
       </div>
-      Custom CTA Section
+
+      {/* Custom CTA Section */}
       <div className="bg-gradient-to-r from-blue-900/40 to-purple-900/40 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Join Our Team</h2>
@@ -293,7 +309,9 @@ const TeamPage = () => {
           </button>
         </div>
       </div>
+
       <Footer />
+
       {/* Add some custom styles for animations and team components */}
       <style jsx>{`
         .teams-grid {
