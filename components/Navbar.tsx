@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
       {/* Date display - visible when logo is hovered */}
       <div className={`date-container ${isLogoHovered ? "visible" : "hidden"}`}>
         <div className="date-display">
-          <span className="date-text"> Mark Your Calendar: March 28-30! </span>
+          <span className="date-text"> Mark Your Calendar: March 27-30! </span>
         </div>
       </div>
 

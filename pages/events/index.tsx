@@ -88,19 +88,7 @@ function App() {
     },
   ];
 
-  const timelineEvents = [
-    ...events,
-    {
-      id: "seekhathon-end",
-      title: "Seekhathon Finale",
-      icon: <Brain className="icon" />,
-      description:
-        "The culmination of our 24-hour learning marathon. Teams present their completed projects, demonstrate their solutions, and share their learning experiences with the community.",
-      date: "March 30, 2025",
-      time: "2:00 PM",
-      venue: "P Block",
-    },
-  ].sort((a, b) => {
+  const timelineEvents = events.sort((a, b) => {
     const dateA = new Date(`${a.date} ${a.time}`);
     const dateB = new Date(`${b.date} ${b.time}`);
     return dateA.getTime() - dateB.getTime();
