@@ -76,7 +76,19 @@ const Home: NextPage = () => {
       <Head>
         <title>Triverse</title>
         <meta name="description" content="Triverse 2.0 - March 28-30" />
-        <link rel="icon" href="/favicon.ico" />
+
+        {/* Replace the existing favicon with the new triangle logo */}
+        <link
+          rel="icon"
+          href="/assets/triangle-logo.svg"
+          type="image/svg+xml"
+        />
+        <link rel="apple-touch-icon" href="/assets/triangle-logo-192.png" />
+        <link rel="shortcut icon" href="/assets/triangle-logo.ico" />
+
+        {/* Add a web app manifest for PWA support */}
+        <link rel="manifest" href="/manifest.json" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -168,7 +180,7 @@ const Home: NextPage = () => {
 
         <section className="dual-section">
           <div className="section-container">
-            <ParallaxSection className="about-us-section" speed={0.3}>
+            <div className="about-us-section">
               <div className="section-content about-section">
                 <div className="floating-particles">
                   <div className="particle p1"></div>
@@ -236,7 +248,6 @@ const Home: NextPage = () => {
                   </div>
                 </div>
 
-                {/* Move pillars section outside the grid for better spacing */}
                 <div className="pillars-section">
                   <h3 className="pillars-title">Our Core Pillars</h3>
 
@@ -325,7 +336,7 @@ const Home: NextPage = () => {
                   </Link>
                 </div>
               </div>
-            </ParallaxSection>
+            </div>
           </div>
         </section>
       </main>
@@ -840,24 +851,9 @@ const Home: NextPage = () => {
 
         .dual-section {
           width: 100%;
-          padding: 6rem 0;
+          padding: 6rem 0 2rem; /* Changed from "6rem 0" to "6rem 0 2rem" to reduce bottom padding */
           position: relative;
           margin-top: 2rem;
-        }
-
-        .dual-section::before {
-          content: "";
-          position: absolute;
-          top: -50px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 2px;
-          height: 100px;
-          background: linear-gradient(
-            to bottom,
-            rgba(187, 145, 191, 0),
-            rgba(187, 145, 191, 0.6)
-          );
         }
 
         .section-container {
@@ -886,7 +882,9 @@ const Home: NextPage = () => {
           background: rgba(40, 15, 60, 0.75);
           border: 1px solid rgba(146, 93, 161, 0.3);
           position: relative;
-          margin-bottom: 6rem; /* Added extra space at the bottom to prevent cutoff */
+          margin-bottom: 2rem; /* Reduced from 6rem to 2rem */
+          overflow: visible; /* Ensure content can overflow if needed */
+          padding-top: 2rem; /* Ensure space at the top */
         }
 
         .floating-particles {
@@ -969,6 +967,7 @@ const Home: NextPage = () => {
           z-index: 2;
           text-align: center;
           margin-bottom: 3.5rem;
+          padding-top: 1rem; /* Add padding at top for breathing space */
         }
 
         .section-badge {
@@ -1282,17 +1281,27 @@ const Home: NextPage = () => {
         }
 
         .navigation-button-container {
-          margin-top: 4.5rem;
+          margin-top: 3rem;
           text-align: center;
           position: relative;
-          z-index: 2;
+          z-index: 10;
+          padding-bottom: 1rem; /* Reduced from 2rem to 1rem */
+          width: 100%;
+          display: block;
+          clear: both;
+          pointer-events: auto;
         }
 
         .explore-button {
           padding: 1.2rem 2.8rem;
           font-size: 1.1rem;
           font-weight: 500;
-          background: rgba(234, 142, 234, 0.15);
+          background: rgba(
+            234,
+            142,
+            234,
+            0.25
+          ); /* Slightly increased opacity */
           border: 2px solid #ea8eea;
           border-radius: 50px;
           color: #ffffff;
@@ -1303,6 +1312,9 @@ const Home: NextPage = () => {
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
+          box-shadow: 0 4px 15px rgba(234, 142, 234, 0.3); /* Added shadow for visibility */
+          margin: 0 auto; /* Center the button */
+          transform: translateZ(0); /* Force hardware acceleration */
         }
 
         .explore-button::before {
@@ -1314,8 +1326,8 @@ const Home: NextPage = () => {
           height: 100%;
           background: linear-gradient(
             45deg,
-            rgba(234, 142, 234, 0.1),
-            rgba(234, 142, 234, 0.2)
+            rgba(234, 142, 234, 0.2),
+            rgba(234, 142, 234, 0.3)
           );
           transform: translateX(-100%);
           transition: transform 0.6s ease;
@@ -1323,8 +1335,8 @@ const Home: NextPage = () => {
 
         .explore-button:hover {
           transform: translateY(-3px);
-          background: rgba(234, 142, 234, 0.25);
-          box-shadow: 0 6px 20px rgba(234, 142, 234, 0.3);
+          background: rgba(234, 142, 234, 0.4); /* Increased opacity on hover */
+          box-shadow: 0 6px 20px rgba(234, 142, 234, 0.4);
         }
 
         .explore-button:hover::before {
@@ -1338,315 +1350,8 @@ const Home: NextPage = () => {
         .button-text {
           position: relative;
           z-index: 1;
-        }
-
-        .arrow-icon {
-          width: 20px;
-          height: 20px;
-          position: relative;
-          z-index: 1;
-          transition: transform 0.3s ease;
-        }
-
-        .explore-button:hover .arrow-icon {
-          transform: translateX(5px);
-        }
-
-        @media (max-width: 768px) {
-          .sponsors-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 100;
-          }
-
-          .fixed-logo-panel {
-            top: 60px;
-          }
-
-          .triverse-logo-small {
-            width: 120px;
-            height: 40px;
-          }
-
-          .sponsors-wrapper {
-            padding: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            background: transparent;
-            box-shadow: none;
-            border: none;
-          }
-
-          .sponsor-item {
-            width: 120px;
-            height: 60px;
-          }
-
-          .sponsor-date {
-            font-size: 0.75rem;
-          }
-
-          .sponsor-divider {
-            display: none;
-          }
-
-          .main {
-            padding-top: 100px; /* Adjust padding for mobile */
-          }
-
-          .hero-section {
-            margin-top: 0;
-            padding: 0 1rem;
-          }
-
-          .hero-content {
-            padding: 1rem;
-          }
-
-          .triverse-logo {
-            max-width: 650px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-          }
-
-          .subtitle {
-            font-size: 1.6rem;
-            margin: 0;
-          }
-
-          .register-button {
-            padding: 0.8rem 2.5rem;
-            font-size: 1rem;
-            margin-top: 1.8rem;
-          }
-
-          .section-container {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .section-content {
-            padding: 2.5rem;
-          }
-
-          .section-title {
-            font-size: 2.5rem;
-          }
-
-          .section-text {
-            font-size: 1.1rem;
-          }
-
-          .about-icons {
-            margin-top: 2.5rem;
-          }
-
-          .icon-circle {
-            width: 70px;
-            height: 70px;
-          }
-
-          .icon-circle svg {
-            width: 35px;
-            height: 35px;
-          }
-
-          .glimpses-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-          }
-
-          .glimpse-item {
-            height: 150px;
-          }
-
-          .about-grid {
-            grid-template-columns: 1fr; /* Single column on mobile */
-            gap: 2rem;
-          }
-
-          .about-visual {
-            margin-bottom: 1rem; /* Add space after visual */
-          }
-
-          .pillars-section {
-            margin-top: 3rem; /* Increase space before pillars section on mobile */
-          }
-
-          .about-icons {
-            flex-direction: column; /* Stack icons vertically on mobile */
-            align-items: center;
-            gap: 2rem;
-          }
-
-          .icon-item {
-            width: 90%; /* Wider on mobile */
-            max-width: 300px; /* Maximum width on mobile */
-            padding: 1.2rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .sponsors-wrapper {
-            padding: 1rem;
-            gap: 1.5rem;
-          }
-
-          .sponsor-item {
-            width: 100px;
-            height: 50px;
-          }
-
-          .sponsor-date {
-            font-size: 0.7rem;
-          }
-
-          .sponsor-divider {
-            height: 20px;
-            margin: 0 0.8rem;
-          }
-
-          .hero-content {
-            padding: 0.5rem;
-          }
-
-          .triverse-logo {
-            max-width: 400px;
-            margin: 0 auto;
-          }
-
-          .subtitle {
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-          }
-
-          .register-button {
-            padding: 0.7rem 2rem;
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-          }
-
-          .section-container {
-            padding: 0 1rem;
-          }
-
-          .section-content {
-            padding: 2rem;
-          }
-
-          .section-title {
-            font-size: 2rem;
-          }
-
-          .section-text {
-            font-size: 1rem;
-            line-height: 1.7;
-          }
-
-          .about-icons {
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-          }
-
-          .icon-circle {
-            width: 55px;
-            height: 55px;
-          }
-
-          .icon-circle svg {
-            width: 28px;
-            height: 28px;
-          }
-
-          .icon-item span {
-            font-size: 1rem;
-          }
-
-          .glimpses-grid {
-            grid-template-columns: 1fr;
-            gap: 1.2rem;
-          }
-
-          .glimpse-item {
-            height: 200px;
-          }
-
-          .icon-item {
-            width: 100%; /* Full width on small mobile */
-            padding: 1rem;
-            min-width: 0; /* Remove minimum width on small screens */
-          }
-
-          .icon-description {
-            max-width: 100%; /* Allow description to use full width */
-          }
-        }
-
-        .navigation-button-container {
-          margin-top: 4rem;
-          text-align: center;
-          position: relative;
-          z-index: 2;
-        }
-
-        .explore-button {
-          padding: 1.2rem 2.8rem;
-          font-size: 1.1rem;
+          color: #ffffff; /* Explicitly set text color */
           font-weight: 500;
-          background: rgba(234, 142, 234, 0.15);
-          border: 2px solid #ea8eea;
-          border-radius: 50px;
-          color: #ffffff;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          gap: 1rem;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .explore-button::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            45deg,
-            rgba(234, 142, 234, 0.1),
-            rgba(234, 142, 234, 0.2)
-          );
-          transform: translateX(-100%);
-          transition: transform 0.6s ease;
-        }
-
-        .explore-button:hover {
-          transform: translateY(-3px);
-          background: rgba(234, 142, 234, 0.25);
-          box-shadow: 0 6px 20px rgba(234, 142, 234, 0.3);
-        }
-
-        .explore-button:hover::before {
-          transform: translateX(0);
-        }
-
-        .explore-button:active {
-          transform: translateY(-1px);
-        }
-
-        .button-text {
-          position: relative;
-          z-index: 1;
         }
 
         .arrow-icon {
@@ -1655,6 +1360,7 @@ const Home: NextPage = () => {
           position: relative;
           z-index: 1;
           transition: transform 0.3s ease;
+          color: #ffffff; /* Explicitly set icon color */
         }
 
         .explore-button:hover .arrow-icon {
@@ -1665,6 +1371,14 @@ const Home: NextPage = () => {
           .explore-button {
             padding: 1rem 2.4rem;
             font-size: 1rem;
+            min-width: 220px; /* Ensure minimum width */
+          }
+
+          .navigation-button-container {
+            margin-top: 2rem; /* Reduced from 3.5rem to 2rem */
+            padding-bottom: 1rem; /* Reduced from 2.5rem to 1rem */
+            position: relative;
+            z-index: 10;
           }
         }
 
@@ -1672,6 +1386,14 @@ const Home: NextPage = () => {
           .explore-button {
             padding: 0.9rem 2rem;
             font-size: 0.9rem;
+            min-width: 200px; /* Ensure minimum width on smaller screens */
+          }
+
+          .navigation-button-container {
+            margin-top: 2rem; /* Reduced from 3rem to 2rem */
+            width: 100%;
+            z-index: 10;
+            padding-bottom: 1rem; /* Reduced from 3rem to 1rem */
           }
         }
 
@@ -1715,6 +1437,7 @@ const Home: NextPage = () => {
           .about-grid {
             grid-template-columns: 1fr;
             gap: 2rem;
+            width: 100%;
           }
 
           .section-content {
@@ -1775,7 +1498,10 @@ const Home: NextPage = () => {
 
         /* Add extra padding to ensure everything is visible in the ParallaxSection */
         .about-us-section {
-          padding-bottom: 2rem;
+          padding-bottom: 2rem; /* Reduced from 4rem to 2rem */
+          position: relative;
+          z-index: 2; /* Ensure it's above background elements */
+          overflow: visible; /* Allow content to be fully visible */
         }
 
         /* Space background styles */
@@ -1830,6 +1556,829 @@ const Home: NextPage = () => {
         .page-loaded {
           opacity: 1;
           transition: opacity 0.5s ease-in;
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        /* Base mobile styles for most phones */
+        @media (max-width: 767px) {
+          .container {
+            overflow-x: hidden;
+            width: 100%;
+          }
+
+          .main {
+            padding: 0 1rem;
+            padding-top: 80px;
+            width: 100%;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .background-img {
+            animation: none; /* Disable zoom animation on mobile for better performance */
+          }
+
+          .particle {
+            opacity: 0.2; /* Reduce particle opacity on mobile */
+          }
+
+          .sponsors-bar {
+            position: fixed;
+            height: auto;
+            padding: 0.5rem 0;
+            background: rgba(40, 15, 60, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+          }
+
+          .sponsors-wrapper {
+            padding: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+          }
+
+          .sponsor-item {
+            width: 80px;
+            height: 35px;
+            margin: 0.3rem;
+          }
+
+          .sponsor-divider {
+            display: none;
+          }
+
+          .hero-section {
+            min-height: 80vh;
+            padding: 1rem 0.5rem;
+            justify-content: flex-start;
+            margin-top: 2rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+          }
+
+          .hero-content {
+            padding: 1rem 0.5rem;
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+          }
+
+          .triverse-logo {
+            max-width: 85%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .triverse-logo img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+          }
+
+          .divider {
+            width: 180px; /* Narrower on mobile */
+            margin: 0.8rem auto;
+          }
+
+          .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            padding: 0 1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            width: 100%;
+          }
+
+          .register-button {
+            padding: 0.8rem 2.2rem;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+          }
+
+          .dual-section {
+            padding: 3rem 0;
+            margin-top: 1rem;
+            width: 100%;
+          }
+
+          .section-container {
+            width: 100%;
+            padding: 0;
+          }
+
+          .about-us-section {
+            width: 100%;
+            padding: 0 0.5rem;
+          }
+
+          .section-content {
+            padding: 1.5rem;
+            border-radius: 16px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: visible;
+          }
+
+          .section-badge {
+            font-size: 0.8rem;
+            padding: 0.3rem 1rem;
+          }
+
+          .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            text-align: center;
+          }
+
+          .section-divider {
+            margin-bottom: 1.5rem;
+          }
+
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            width: 100%;
+          }
+
+          .about-content {
+            width: 100%;
+          }
+
+          .section-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            width: 100%;
+            text-align: left;
+          }
+
+          .stats-container {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            justify-content: space-around;
+            width: 100%;
+          }
+
+          .stat-number {
+            font-size: 2rem;
+          }
+
+          .stat-label {
+            font-size: 0.85rem;
+          }
+
+          .about-visual {
+            width: 100%;
+            margin: 0 auto;
+          }
+
+          .image-container {
+            height: 220px;
+            width: 100%;
+          }
+
+          .visual-quote {
+            position: relative;
+            bottom: 0;
+            right: 0;
+            margin: 1.5rem auto 0;
+            max-width: 90%;
+            padding: 0.8rem 1.2rem;
+            transform: rotate(0);
+          }
+
+          .visual-quote span {
+            font-size: 0.95rem;
+          }
+
+          .pillars-section {
+            margin-top: 3rem;
+            padding: 0 0.5rem;
+            width: 100%;
+          }
+
+          .pillars-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            width: 100%;
+            text-align: center;
+          }
+
+          .about-icons {
+            flex-direction: column;
+            margin-top: 1.5rem;
+            gap: 2rem;
+            width: 100%;
+            align-items: center;
+          }
+
+          .icon-item {
+            width: 100%;
+            max-width: 280px;
+            padding: 1.2rem 1rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .icon-circle {
+            width: 65px;
+            height: 65px;
+          }
+
+          .icon-circle svg {
+            width: 30px;
+            height: 30px;
+          }
+
+          .icon-item span {
+            font-size: 1.1rem;
+            text-align: center;
+          }
+
+          .icon-description {
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
+          }
+
+          .navigation-button-container {
+            margin-top: 3rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+
+          .explore-button {
+            padding: 0.9rem 2rem;
+            font-size: 0.95rem;
+            width: 80%;
+            max-width: 280px;
+            justify-content: center;
+            margin: 0 auto;
+          }
+
+          /* Improve touch targets for better mobile interaction */
+          .register-button,
+          .explore-button,
+          .icon-item,
+          .triverse-logo {
+            touch-action: manipulation;
+          }
+
+          /* Fix floating elements on scroll */
+          .floating-particles {
+            display: none; /* Hide particles on mobile for better performance */
+          }
+        }
+
+        /* Extra styles for medium-sized phones */
+        @media (min-width: 480px) and (max-width: 767px) {
+          .sponsor-item {
+            width: 100px;
+            height: 45px;
+          }
+
+          .triverse-logo {
+            max-width: 450px;
+          }
+
+          .subtitle {
+            font-size: 1.4rem;
+          }
+
+          .about-icons {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .icon-item {
+            width: calc(50% - 1rem);
+            min-width: 150px;
+          }
+
+          .floating-particles {
+            display: block;
+            opacity: 0.3;
+          }
+        }
+
+        /* Styles for small phones */
+        @media (max-width: 479px) {
+          body,
+          html {
+            overflow-x: hidden;
+          }
+
+          .main {
+            padding-top: 70px;
+            overflow-x: hidden;
+          }
+
+          .hero-section {
+            padding: 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .section-container {
+            padding: 0;
+          }
+
+          .sponsors-bar {
+            padding: 0.3rem 0;
+          }
+
+          .sponsors-wrapper {
+            padding: 0.3rem;
+            gap: 0.5rem;
+          }
+
+          .sponsor-item {
+            width: 70px;
+            height: 30px;
+            margin: 0.2rem;
+          }
+
+          .triverse-logo {
+            max-width: 90%;
+            margin: 0 auto;
+          }
+
+          .subtitle {
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            margin-top: 0.3rem;
+            padding: 0 0.5rem;
+          }
+
+          .register-button {
+            padding: 0.7rem 2rem;
+            font-size: 0.9rem;
+            margin-top: 1.2rem;
+          }
+
+          .dual-section {
+            padding: 2rem 0;
+          }
+
+          .section-content {
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 0 auto;
+          }
+
+          .section-title {
+            font-size: 1.8rem;
+          }
+
+          .section-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+          }
+
+          .stats-container {
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+          }
+
+          .stat-item {
+            width: 100%;
+            text-align: center;
+          }
+
+          .image-container {
+            height: 180px;
+          }
+
+          .visual-quote {
+            padding: 0.7rem 1rem;
+          }
+
+          .visual-quote span {
+            font-size: 0.9rem;
+          }
+
+          .icon-item {
+            padding: 1rem 0.8rem;
+          }
+
+          .icon-circle {
+            width: 55px;
+            height: 55px;
+          }
+
+          .icon-circle svg {
+            width: 25px;
+            height: 25px;
+          }
+
+          .navigation-button-container {
+            margin-top: 2.5rem;
+          }
+
+          .explore-button {
+            padding: 0.8rem 1.8rem;
+            font-size: 0.9rem;
+            width: 90%;
+          }
+        }
+
+        /* Optimize for very small phones */
+        @media (max-width: 359px) {
+          .main {
+            padding: 0 0.5rem;
+            padding-top: 65px;
+          }
+
+          .section-container {
+            padding: 0;
+          }
+
+          .sponsor-item {
+            width: 60px;
+            height: 25px;
+            margin: 0.15rem;
+          }
+
+          .triverse-logo {
+            max-width: 95%;
+          }
+
+          .subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+          }
+
+          .register-button {
+            padding: 0.6rem 1.8rem;
+            font-size: 0.85rem;
+          }
+
+          .section-title {
+            font-size: 1.6rem;
+          }
+
+          .section-content {
+            padding: 1rem;
+          }
+
+          .section-text {
+            font-size: 0.9rem;
+          }
+
+          .pillars-title {
+            font-size: 1.5rem;
+          }
+
+          .icon-circle {
+            width: 50px;
+            height: 50px;
+          }
+
+          .icon-circle svg {
+            width: 22px;
+            height: 22px;
+          }
+
+          .explore-button {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.85rem;
+          }
+        }
+
+        /* Handle landscape orientation on phones */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .hero-section {
+            min-height: 120vh;
+            padding-top: 1rem;
+          }
+
+          .triverse-logo {
+            max-width: 300px;
+          }
+
+          .subtitle {
+            margin-top: 0.3rem;
+          }
+
+          .register-button {
+            margin-top: 1rem;
+          }
+
+          .main {
+            padding-top: 60px;
+          }
+
+          .sponsors-bar {
+            position: absolute;
+          }
+
+          .about-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+          }
+
+          .about-icons {
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .icon-item {
+            width: calc(33.33% - 1rem);
+            padding: 0.8rem;
+          }
+        }
+
+        /* Fix for any overflow issues on mobile */
+        @media (max-width: 767px) {
+          html,
+          body {
+            max-width: 100vw;
+            overflow-x: hidden;
+          }
+
+          .container,
+          .main,
+          .section-container,
+          .about-us-section,
+          .section-content {
+            max-width: 100%;
+            overflow-x: hidden;
+          }
+
+          /* Ensure about section is properly revealed */
+          .about-section {
+            margin-bottom: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          /* Fix center alignment issues */
+          .triverse-logo,
+          .hero-content,
+          .title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          /* Improve scrolling experience */
+          .dual-section {
+            scroll-margin-top: 80px;
+          }
+        }
+
+        /* Fix for core pillars on mobile devices */
+        @media (max-width: 767px) {
+          /* Other existing mobile styles */
+
+          /* Core Pillars Section Fixes for Mobile */
+          .pillars-section {
+            margin-top: 3rem;
+            padding: 0;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .about-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0 auto;
+            gap: 1.5rem;
+          }
+
+          .icon-item {
+            width: 100%;
+            max-width: 280px;
+            min-width: auto;
+            padding: 1rem 0.5rem;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+          }
+
+          .icon-description {
+            width: 100%;
+            max-width: 100%;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            text-align: center;
+            overflow: visible;
+          }
+
+          .icon-circle {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0.5rem;
+          }
+
+          .icon-circle svg {
+            width: 28px;
+            height: 28px;
+          }
+
+          .icon-item span {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+          }
+        }
+
+        /* Additional fixes for small phones */
+        @media (max-width: 479px) {
+          .about-icons {
+            gap: 1.2rem;
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0 0.5rem;
+          }
+
+          .icon-item {
+            padding: 0.8rem 0.5rem;
+            width: 100%;
+            max-width: 100%;
+          }
+
+          .icon-description {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            padding: 0 0.3rem;
+          }
+
+          .icon-circle {
+            width: 50px;
+            height: 50px;
+          }
+
+          .icon-circle svg {
+            width: 24px;
+            height: 24px;
+          }
+
+          .icon-item span {
+            font-size: 1rem;
+          }
+
+          .pillars-title {
+            font-size: 1.7rem;
+            margin-bottom: 1.5rem;
+          }
+        }
+
+        /* Very small phones */
+        @media (max-width: 359px) {
+          .icon-item {
+            padding: 0.7rem 0.3rem;
+          }
+
+          .icon-description {
+            font-size: 0.8rem;
+          }
+        }
+
+        /* Landscape mode adjustments for core pillars */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .about-icons {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+          }
+
+          .icon-item {
+            width: calc(33.33% - 1rem);
+            max-width: 180px;
+            padding: 0.6rem;
+          }
+
+          .icon-description {
+            font-size: 0.8rem;
+          }
+
+          .icon-circle {
+            width: 45px;
+            height: 45px;
+            margin-bottom: 0.3rem;
+          }
+
+          .icon-circle svg {
+            width: 22px;
+            height: 22px;
+          }
+        }
+
+        /* Ensure the parent containers don't clip content */
+        .section-container,
+        .dual-section {
+          overflow: visible; /* Changed from hidden to visible */
+          position: relative;
+          z-index: 2;
+        }
+
+        /* Adjust positioning for smaller screens */
+        @media (max-width: 768px) {
+          .about-section {
+            margin-bottom: 1rem; /* Reduced from 3rem to 1rem for mobile */
+            overflow: visible;
+          }
+
+          .about-us-section {
+            padding-bottom: 1rem; /* Reduced from 3rem to 1rem for mobile */
+            overflow: visible;
+          }
+
+          .section-container,
+          .dual-section {
+            overflow: visible;
+          }
+
+          /* Fix positioning of the pillars section */
+          .pillars-section {
+            position: relative;
+            z-index: 3; /* Ensure it appears above any other elements */
+            margin-top: 2rem; /* Provide space after the previous content */
+            padding-bottom: 2rem; /* Extra padding at bottom */
+          }
+        }
+
+        /* Ensure the navigation button is visible */
+        .navigation-button-container {
+          margin-top: 4.5rem;
+          text-align: center;
+          position: relative;
+          z-index: 3; /* Increased z-index */
+          padding-bottom: 1rem; /* Extra padding at bottom */
+        }
+
+        /* Fix for any overflow issues on mobile */
+        @media (max-width: 767px) {
+          html,
+          body {
+            max-width: 100vw;
+            overflow-x: hidden;
+          }
+
+          .container,
+          .main {
+            max-width: 100%;
+            overflow-x: hidden;
+          }
+
+          /* Ensure these elements don't clip content */
+          .section-container,
+          .about-us-section,
+          .section-content,
+          .pillars-section,
+          .about-icons,
+          .about-grid {
+            max-width: 100%;
+            overflow: visible; /* This is critical for visibility */
+            position: relative;
+            z-index: 2;
+          }
+
+          /* Ensure about section is properly revealed */
+          .about-section {
+            margin-bottom: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: visible;
+          }
         }
       `}</style>
     </div>

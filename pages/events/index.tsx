@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { ChartBar, Cpu, Code, Speech, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Head from "next/head";
+
 import PixelCard from "../../components/pixelcard";
+import Footer from "@/components/Footer";
 
 function App() {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
@@ -452,6 +454,7 @@ function App() {
             </div>
           </div>
         </div>
+        <Footer />
 
         <style jsx>{`
           .container {
@@ -1361,9 +1364,115 @@ function App() {
             .event-wrapper {
               box-shadow: none;
             }
+
+            /* Optimize particle effects for better performance */
+            .particle-canvas {
+              opacity: 0.7;
+            }
+
+            .light-beam {
+              opacity: 0.4;
+              width: 60px;
+            }
+
+            .vignette-effect {
+              box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+            }
+
+            /* Better touch targets */
+            .register-button {
+              padding: 0.8rem 1.4rem;
+              min-height: 44px; /* Minimum apple recommended touch target */
+            }
+
+            .back-link {
+              padding: 0.5rem 1rem;
+              min-height: 44px;
+              display: flex;
+              align-items: center;
+            }
           }
 
-          @media (max-width: 480px) {
+          /* Small phones (iPhone SE, Galaxy S8, etc.) */
+          @media (max-width: 375px) {
+            .title {
+              font-size: 2.5rem;
+              letter-spacing: 0.08em;
+            }
+
+            .subtitle {
+              font-size: 1rem;
+              margin: 1rem auto 0;
+            }
+
+            .back-link {
+              top: 1rem;
+              left: 1rem;
+              font-size: 0.8rem;
+              padding: 0.4rem 0.8rem;
+            }
+
+            .back-icon {
+              width: 0.9rem;
+              height: 0.9rem;
+            }
+
+            .events-grid {
+              gap: 1.5rem;
+            }
+
+            .event-title {
+              font-size: 1.5rem;
+            }
+
+            .event-description {
+              font-size: 0.9rem;
+            }
+
+            .card-content {
+              padding: 1.25rem;
+            }
+
+            .icon-container {
+              padding: 0.7rem;
+            }
+
+            .icon {
+              width: 1.5rem;
+              height: 1.5rem;
+            }
+
+            .register-button {
+              font-size: 0.75rem;
+              padding: 0.6rem 1rem;
+            }
+
+            .timeline-title {
+              font-size: 2rem;
+            }
+
+            .timeline-content {
+              padding: 1.25rem;
+              padding-left: 3rem;
+            }
+
+            .timeline-event-title {
+              font-size: 1.3rem;
+            }
+
+            .timeline-line {
+              left: 1.25rem;
+            }
+
+            .timeline-marker {
+              left: 1.25rem;
+              width: 1.75rem;
+              height: 1.75rem;
+            }
+          }
+
+          /* Medium phones (iPhone X/11/12/13, Pixel, etc.) */
+          @media (min-width: 376px) and (max-width: 480px) {
             .title {
               font-size: 2.75rem;
             }
@@ -1372,21 +1481,23 @@ function App() {
               font-size: 2.25rem;
             }
 
-            .back-link {
-              padding: 0.4rem 0.8rem;
-            }
-
-            .back-icon {
-              width: 1rem;
-              height: 1rem;
-            }
-
             .event-title {
-              font-size: 1.75rem;
+              font-size: 1.65rem;
             }
 
-            .timeline-event-title {
-              font-size: 1.5rem;
+            .register-button {
+              font-size: 0.8rem;
+              padding: 0.6rem 1.2rem;
+            }
+
+            .timeline-marker {
+              left: 1.5rem;
+              width: 2rem;
+              height: 2rem;
+            }
+
+            .timeline-line {
+              left: 1.5rem;
             }
 
             .timeline-content {
@@ -1394,15 +1505,133 @@ function App() {
               padding: 1.5rem;
               padding-left: 3.5rem;
             }
+          }
 
-            .timeline-line {
-              left: 1.5rem;
+          /* Larger phones (iPhone Pro Max, Samsung Galaxy S21 Ultra, etc.) */
+          @media (min-width: 481px) and (max-width: 768px) {
+            .title {
+              font-size: 3.25rem;
             }
 
-            .timeline-marker {
-              left: 1.5rem;
-              width: 2rem;
-              height: 2rem;
+            .events-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1.5rem;
+            }
+
+            .card-content {
+              padding: 1.5rem;
+            }
+
+            /* For larger phones, improve readability while preserving design */
+            .event-description {
+              line-height: 1.6;
+            }
+
+            .timeline-content {
+              width: 75%;
+            }
+          }
+
+          /* Landscape orientation specific adjustments */
+          @media (max-height: 480px) and (orientation: landscape) {
+            .content {
+              padding-top: 4rem;
+            }
+
+            .back-link {
+              top: 0.75rem;
+            }
+
+            .header {
+              margin-bottom: 0.5rem;
+            }
+
+            .title {
+              font-size: 2.5rem;
+              margin-bottom: 0.5rem;
+            }
+
+            .subtitle {
+              margin-top: 0.5rem;
+            }
+
+            .events-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1rem;
+            }
+
+            .card-content {
+              padding: 1rem;
+            }
+
+            .event-title {
+              font-size: 1.5rem;
+              margin-bottom: 0.5rem;
+            }
+
+            .event-description {
+              margin-bottom: 0.75rem;
+              max-height: 80px;
+              overflow-y: auto;
+            }
+
+            .highlights {
+              gap: 0.3rem;
+              margin-bottom: 0.5rem;
+              max-height: 80px;
+              overflow-y: auto;
+            }
+
+            .venue-container {
+              margin-top: 0.75rem;
+              padding-top: 0.75rem;
+            }
+          }
+
+          /* High pixel density screens (retina and higher) */
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .background-img {
+              image-rendering: -webkit-optimize-contrast;
+            }
+
+            /* Increase contrast for better visibility on high-res screens */
+            .event-description,
+            .timeline-description {
+              color: rgba(233, 213, 255, 0.95);
+            }
+
+            .highlight-dot {
+              box-shadow: 0 0 7px rgba(234, 142, 234, 0.6);
+            }
+          }
+
+          /* Dark mode specific adjustments */
+          @media (prefers-color-scheme: dark) {
+            .background-overlay {
+              background: linear-gradient(
+                135deg,
+                rgba(60, 20, 80, 0.9),
+                rgba(30, 15, 50, 0.95),
+                rgba(80, 25, 90, 0.85)
+              );
+            }
+
+            .vignette-effect {
+              box-shadow: inset 0 0 180px rgba(0, 0, 0, 0.8);
+            }
+          }
+
+          /* Special handling for notched phones (iPhone X and newer) */
+          @supports (padding: max(0px)) {
+            .back-link {
+              padding-left: max(1rem, env(safe-area-inset-left));
+              top: max(1.5rem, env(safe-area-inset-top));
+            }
+
+            .content {
+              padding-left: max(1rem, env(safe-area-inset-left));
+              padding-right: max(1rem, env(safe-area-inset-right));
+              padding-bottom: max(4rem, env(safe-area-inset-bottom) + 2rem);
             }
           }
 
@@ -1418,18 +1647,6 @@ function App() {
           @supports (-webkit-touch-callout: none) {
             .container {
               background-attachment: scroll;
-            }
-          }
-
-          /* Add responsive adjustments for background effects */
-          @media (max-width: 768px) {
-            .light-beam {
-              opacity: 0.4;
-              width: 60px;
-            }
-
-            .vignette-effect {
-              box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
             }
           }
         `}</style>
