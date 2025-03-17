@@ -15,7 +15,7 @@ import {
 import Link from "next/link";
 import Head from "next/head";
 
-import PixelCard from "../../components/pixelcard"; // Ensure PixelCard is imported
+import PixelCard from "../../components/pixelcard";
 import Footer from "@/components/Footer";
 
 // Team data structure
@@ -35,7 +35,6 @@ interface Team {
 
 const TeamPage = () => {
   const [activeTeam, setActiveTeam] = useState<string | null>(null);
-  const [showcaseTeam, setShowcaseTeam] = useState<string>("office-bearers");
 
   // Define teams data
   const teams: Team[] = [
@@ -142,29 +141,13 @@ const TeamPage = () => {
     setActiveTeam(activeTeam === teamId ? null : teamId);
   };
 
-  // Auto cycle through teams for the showcase
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Get current team index
-      const currentIndex = teams.findIndex((team) => team.id === showcaseTeam);
-      // Get next team index (or loop back to start)
-      const nextIndex = (currentIndex + 1) % teams.length;
-      // Set next team
-      setShowcaseTeam(teams[nextIndex].id);
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [showcaseTeam, teams]);
-
-  // Get the currently showcased team
-  const currentShowcaseTeam = teams.find((team) => team.id === showcaseTeam);
-
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Head>
         <title>Our Teams | Triverse</title>
         <meta name="description" content="Meet the teams behind Triverse" />
       </Head>
+
       {/* Header with back button */}
       <div className="container mx-auto px-4 py-8">
         <Link
@@ -184,59 +167,6 @@ const TeamPage = () => {
             Meet the incredible people who make everything possible. Each team
             brings unique skills and passion to our mission.
           </p>
-        </div>
-
-        {/* Team Showcase Section - Auto-cycling */}
-        <div className="team-showcase">
-          <div className="team-tabs">
-            {teams.map((team) => (
-              <button
-                key={team.id}
-                className={`team-tab ${
-                  showcaseTeam === team.id ? "active" : ""
-                }`}
-                onClick={() => setShowcaseTeam(team.id)}
-              >
-                <div className="tab-icon">{team.icon}</div>
-                <span className="tab-name">{team.name}</span>
-              </button>
-            ))}
-          </div>
-
-          {currentShowcaseTeam && (
-            <div className="showcase-content">
-              <div className="showcase-header">
-                <h2 className="showcase-title">{currentShowcaseTeam.name}</h2>
-                <p className="showcase-description">
-                  {currentShowcaseTeam.description}
-                </p>
-              </div>
-
-              <div className="showcase-members">
-                {currentShowcaseTeam.members.map((member, idx) => (
-                  <div key={idx} className="showcase-member">
-                    <div className="member-avatar-large">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="avatar-image-large"
-                        />
-                      ) : (
-                        <span>{member.name.charAt(0)}</span>
-                      )}
-                    </div>
-                    <div className="member-info">
-                      <h3 className="showcase-member-name">{member.name}</h3>
-                      <p className="showcase-member-position">
-                        {member.position}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Teams Grid */}
@@ -449,162 +379,6 @@ const TeamPage = () => {
         @media (min-width: 1024px) {
           .teams-grid {
             grid-template-columns: 1fr 1fr 1fr 1fr;
-          }
-        }
-
-        /* New styles for team showcase */
-        .team-showcase {
-          background: rgba(30, 41, 59, 0.4);
-          border-radius: 10px;
-          padding: 2rem;
-          margin-bottom: 3rem;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .team-tabs {
-          display: flex;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          gap: 0.5rem;
-          padding-bottom: 1rem;
-          margin-bottom: 2rem;
-          border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .team-tab {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 0.75rem 1rem;
-          border-radius: 8px;
-          background: transparent;
-          border: none;
-          color: #94a3b8;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          min-width: 100px;
-          text-align: center;
-        }
-
-        .team-tab:hover {
-          color: #f8fafc;
-          background: rgba(59, 130, 246, 0.1);
-        }
-
-        .team-tab.active {
-          color: #f8fafc;
-          background: rgba(59, 130, 246, 0.2);
-          border-bottom: 2px solid #3b82f6;
-        }
-
-        .tab-icon {
-          margin-bottom: 0.5rem;
-          background: rgba(59, 130, 246, 0.1);
-          padding: 0.5rem;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .active .tab-icon {
-          background: rgba(59, 130, 246, 0.3);
-        }
-
-        .tab-name {
-          font-weight: 500;
-          font-size: 0.875rem;
-          white-space: nowrap;
-        }
-
-        .showcase-content {
-          animation: fadeIn 0.5s ease-out;
-        }
-
-        .showcase-header {
-          margin-bottom: 2rem;
-        }
-
-        .showcase-title {
-          font-size: 2rem;
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-          background: linear-gradient(90deg, #60a5fa, #a78bfa);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .showcase-description {
-          font-size: 1.125rem;
-          color: #cbd5e1;
-          max-width: 800px;
-        }
-
-        .showcase-members {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 1.5rem;
-        }
-
-        .showcase-member {
-          display: flex;
-          align-items: center;
-          padding: 1rem;
-          background: rgba(30, 41, 59, 0.6);
-          border-radius: 8px;
-          border: 1px solid rgba(148, 163, 184, 0.2);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .showcase-member:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-        }
-
-        .member-avatar-large {
-          width: 3.5rem;
-          height: 3.5rem;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #2563eb, #9333ea);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 1rem;
-          font-size: 1.5rem;
-          color: white;
-        }
-
-        .avatar-image-large {
-          width: 3.5rem;
-          height: 3.5rem;
-          border-radius: 50%;
-          object-fit: cover;
-        }
-
-        .member-info {
-          flex: 1;
-        }
-
-        .showcase-member-name {
-          font-weight: 600;
-          font-size: 1.125rem;
-          color: #f8fafc;
-        }
-
-        .showcase-member-position {
-          font-size: 0.9375rem;
-          color: #94a3b8;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-          .showcase-members {
-            grid-template-columns: 1fr;
-          }
-
-          .team-tabs {
-            justify-content: flex-start;
           }
         }
       `}</style>
