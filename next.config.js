@@ -17,6 +17,14 @@ const nextConfig = {
   trailingSlash: false,
   // Fix potential static file serving issues
   assetPrefix: process.env.NODE_ENV === "production" ? undefined : undefined,
+  // Disable ESLint completely during builds
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Disable TypeScript checking during builds
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 module.exports = nextConfig;

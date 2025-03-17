@@ -153,9 +153,10 @@ function App() {
                     event.variant as
                       | "blue"
                       | "pink"
+                      | "green"
                       | "yellow"
+                      | "purple"
                       | "default"
-                      | undefined
                   }
                   className="event-card-pixel"
                 >

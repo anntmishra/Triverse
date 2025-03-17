@@ -153,10 +153,24 @@ const VARIANTS = {
     colors: "#fecdd3,#fda4af,#e11d48",
     noFocus: true,
   },
+  green: {
+    activeColor: "#86efac",
+    gap: 5,
+    speed: 30,
+    colors: "#86efac,#4ade80,#16a34a",
+    noFocus: false,
+  },
+  purple: {
+    activeColor: "#e9d5ff",
+    gap: 8,
+    speed: 40,
+    colors: "#e9d5ff,#d8b4fe,#a855f7",
+    noFocus: false,
+  },
 };
 
 interface PixelCardProps {
-  variant?: keyof typeof VARIANTS;
+  variant?: keyof typeof VARIANTS | "green" | "purple";
   gap?: number;
   speed?: number;
   colors?: string;

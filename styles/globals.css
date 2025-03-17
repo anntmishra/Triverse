@@ -1,37 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  html,
-  body {
-    @apply p-0 m-0 overflow-x-hidden bg-transparent text-white;
-  }
-
-  html {
-    @apply scroll-smooth;
-  }
-
-  body {
-    @apply min-h-screen;
-    @apply bg-black text-white font-sans antialiased;
-  }
-}
-
-/* Root level variables and defaults */
-:root {
-  color-scheme: dark !important;
-}
-
+/* Base styles */
 html,
 body {
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
+  background-color: transparent;
+  color: white;
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color: white !important;
-  background-color: #111111 !important;
-  /* Hide default cursor when using custom cursor */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 a {
@@ -41,6 +24,15 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* Root level variables and defaults */
+:root {
+  color-scheme: dark !important;
+  --primary-light: #e9d5ff;
+  --bright-pink: #ea8eea;
+  --primary-purple: #925da1;
+  --dark-purple: #4c1d95;
 }
 
 /* Ensure dark theme is always applied */
@@ -86,7 +78,7 @@ html::before {
   z-index: -1;
 }
 
-/* Remove cursor-related styles */
+/* Cursor styles */
 a,
 button,
 .dock-item,
@@ -95,18 +87,18 @@ button,
 .triverse-logo,
 .register-button,
 .explore-button {
-  cursor: pointer; /* Restore pointer cursor on interactive elements */
+  cursor: pointer;
 }
 
 /* Responsive handling */
 @media (max-width: 768px) {
   html,
   body {
-    cursor: auto; /* Restore default cursor on mobile devices */
+    cursor: auto;
   }
 
   .custom-cursor {
-    display: none; /* Hide custom cursor on mobile */
+    display: none;
   }
 }
 
@@ -115,70 +107,149 @@ button,
   height: 2rem;
 }
 
-@layer components {
-  .btn-primary {
-    @apply text-white bg-[#ea8eea] bg-opacity-60 hover:bg-opacity-80 px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#ea8eea]/20 text-sm font-medium;
-  }
+/* Component styles */
+.btn-primary {
+  color: white;
+  background-color: rgba(234, 142, 234, 0.6);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+}
 
-  .btn-outline {
-    @apply text-white border border-[#ea8eea] px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#ea8eea]/20 text-sm font-medium hover:bg-[#ea8eea]/10;
-  }
+.btn-primary:hover {
+  background-color: rgba(234, 142, 234, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
 
-  .section-badge {
-    @apply inline-block px-4 py-1 text-sm font-semibold tracking-wider text-primary-light uppercase bg-primary-light bg-opacity-15 rounded-full border border-primary-light border-opacity-30 shadow-md;
-  }
+.btn-outline {
+  color: white;
+  border: 1px solid var(--bright-pink);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+}
 
+.btn-outline:hover {
+  background-color: rgba(234, 142, 234, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  background-color: rgba(233, 213, 255, 0.15);
+  border-radius: 9999px;
+  border: 1px solid rgba(233, 213, 255, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to bottom, #ffffff, #e0c5e3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 768px) {
   .section-title {
-    @apply font-display text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent;
-  }
-
-  .text-primary-light {
-    @apply text-[#e9d5ff];
-  }
-
-  .bg-primary-gradient {
-    @apply bg-gradient-to-b from-[rgba(25,10,40,0.92)] to-[rgba(30,15,50,0.88)];
-  }
-
-  .text-gradient {
-    @apply bg-gradient-to-b from-white to-[#e0c5e3] bg-clip-text text-transparent;
-  }
-
-  .container-main {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .btn {
-    @apply inline-block px-4 py-2 rounded-full transition-all duration-300 ease-in-out cursor-pointer;
-  }
-
-  .card {
-    @apply bg-white/10 backdrop-blur-md border border-white/10 rounded-xl shadow-lg transition-all duration-300;
-  }
-
-  .card-hover {
-    @apply hover:border-[#ea8eea]/40 hover:bg-white/15 hover:shadow-lg hover:shadow-[#ea8eea]/20 hover:-translate-y-1;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 
-@layer utilities {
-  .text-shadow-sm {
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-
-  .text-shadow-md {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
-      0 8px 24px rgba(234, 142, 234, 0.3);
-  }
-
-  .clip-path-left {
-    clip-path: polygon(0 0, 94% 0, 100% 50%, 94% 100%, 0 100%);
-  }
-
-  .clip-path-right {
-    clip-path: polygon(6% 0, 100% 0, 100% 100%, 6% 100%, 0 50%);
-  }
+.text-primary-light {
+  color: var(--primary-light);
 }
 
-/* Font imports */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+.bg-primary-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(25, 10, 40, 0.92),
+    rgba(30, 15, 50, 0.88)
+  );
+}
+
+.text-gradient {
+  background-image: linear-gradient(to bottom, #ffffff, #e0c5e3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.container-main {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  border-color: rgba(234, 142, 234, 0.4);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(234, 142, 234, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Utility styles */
+.text-shadow-sm {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-md {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(234, 142, 234, 0.3);
+}
+
+.clip-path-left {
+  clip-path: polygon(0 0, 94% 0, 100% 50%, 94% 100%, 0 100%);
+}
+
+.clip-path-right {
+  clip-path: polygon(6% 0, 100% 0, 100% 100%, 6% 100%, 0 50%);
+}
+
+/* Font face declaration */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Playfair-Display.woff2") format("woff2");
+}
