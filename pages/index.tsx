@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useTheme } from "../context/ThemeContext";
 import ParallaxSection from "../components/ParallaxSection";
+// import Squares from "../components/squares";
 
 // const BackgroundEffects = dynamic(
 //   () => import("../components/BackgroundEffects"),
