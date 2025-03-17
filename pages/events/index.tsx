@@ -53,20 +53,20 @@ function App() {
       variant: "blue", // Adding variant for PixelCard
     },
     {
-      id: "seekhothon-start",
-      title: "Seekhothon",
+      id: "code-roast",
+      title: "Code Roast",
       icon: <Brain className="icon" />,
       description:
-        "The kickoff of our learning marathon where participants begin their journey to explore new technologies and build innovative solutions. Teams form and start collaborating on cutting-edge tech projects.",
+        "A collaborative code review session where experts analyze and critique your code in a constructive environment. Get valuable feedback on your projects and improve your coding skills.",
       highlights: [
-        "Opening ceremony",
-        "Team formation",
-        "Project briefing",
-        "Initial workshops",
+        "Live code reviews",
+        "Expert feedback",
+        "Best practices discussion",
+        "Performance optimization tips",
       ],
-      date: "March 29, 2025",
-      time: "9:00 AM",
-      venue: "P Block",
+      date: "March 28, 2025",
+      time: "7:00 PM onwards",
+      venue: "103 BLA",
       variant: "pink", // Adding variant for PixelCard
     },
     {
