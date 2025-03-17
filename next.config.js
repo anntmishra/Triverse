@@ -8,6 +8,15 @@ const nextConfig = {
     }
     return config;
   },
+  // Add image optimization config
+  images: {
+    domains: [],
+    unoptimized: process.env.NODE_ENV !== "production",
+  },
+  // Add trailing slash configuration for consistency
+  trailingSlash: false,
+  // Fix potential static file serving issues
+  assetPrefix: process.env.NODE_ENV === "production" ? undefined : undefined,
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;

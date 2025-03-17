@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./pixelcard.module.css";
 
 class Pixel {
@@ -165,150 +165,110 @@ interface PixelCardProps {
   children?: React.ReactNode;
 }
 
-export default function PixelCard({
-  variant = "default",
-  gap,
-  speed,
-  colors,
-  noFocus,
-  className = "",
+const PixelCard: React.FC<PixelCardProps> = ({
   children,
-}: PixelCardProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pixelsRef = useRef<Pixel[]>([]);
-  const animationRef = useRef<number | null>(null);
-  const timePreviousRef = useRef(performance.now());
-  const reducedMotion = useRef(
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false
-  ).current;
-
-  const variantCfg = VARIANTS[variant] || VARIANTS.default;
-  const finalGap = gap ?? variantCfg.gap;
-  const finalSpeed = speed ?? variantCfg.speed;
-  const finalColors = colors ?? variantCfg.colors;
-  const finalNoFocus = noFocus ?? variantCfg.noFocus;
-
-  const initPixels = () => {
-    if (!containerRef.current || !canvasRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const width = Math.floor(rect.width);
-    const height = Math.floor(rect.height);
-    const ctx = canvasRef.current.getContext("2d");
-
-    if (!ctx) return;
-
-    canvasRef.current.width = width;
-    canvasRef.current.height = height;
-    canvasRef.current.style.width = `${width}px`;
-    canvasRef.current.style.height = `${height}px`;
-
-    const colorsArray = finalColors.split(",");
-    const pxs: Pixel[] = [];
-    for (let x = 0; x < width; x += parseInt(finalGap.toString(), 10)) {
-      for (let y = 0; y < height; y += parseInt(finalGap.toString(), 10)) {
-        const color =
-          colorsArray[Math.floor(Math.random() * colorsArray.length)];
-
-        const dx = x - width / 2;
-        const dy = y - height / 2;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const delay = reducedMotion ? 0 : distance;
-
-        pxs.push(
-          new Pixel(
-            canvasRef.current,
-            ctx,
-            x,
-            y,
-            color,
-            getEffectiveSpeed(finalSpeed, reducedMotion),
-            delay
-          )
-        );
-      }
-    }
-    pixelsRef.current = pxs;
-  };
-
-  const doAnimate = (fnName: "appear" | "disappear") => {
-    animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
-    const timeNow = performance.now();
-    const timePassed = timeNow - timePreviousRef.current;
-    const timeInterval = 1000 / 60; // ~60 FPS
-
-    if (timePassed < timeInterval) return;
-    timePreviousRef.current = timeNow - (timePassed % timeInterval);
-
-    const ctx = canvasRef.current?.getContext("2d");
-    if (!ctx || !canvasRef.current) return;
-
-    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-
-    let allIdle = true;
-    for (let i = 0; i < pixelsRef.current.length; i++) {
-      const pixel = pixelsRef.current[i];
-      pixel[fnName]();
-      if (!pixel.isIdle) {
-        allIdle = false;
-      }
-    }
-    if (allIdle) {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+  variant = "default",
+  className = "",
+}) => {
+  const getVariantClass = () => {
+    switch (variant) {
+      case "blue":
+        return "pixel-card-blue";
+      case "pink":
+        return "pixel-card-pink";
+      case "green":
+        return "pixel-card-green";
+      case "yellow":
+        return "pixel-card-yellow";
+      case "purple":
+        return "pixel-card-purple";
+      default:
+        return "pixel-card-default";
     }
   };
-
-  const handleAnimation = (name: "appear" | "disappear") => {
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-    }
-    animationRef.current = requestAnimationFrame(() => doAnimate(name));
-  };
-
-  const onMouseEnter = () => handleAnimation("appear");
-  const onMouseLeave = () => handleAnimation("disappear");
-  const onFocus = (e: React.FocusEvent) => {
-    if (e.currentTarget.contains(e.relatedTarget as Node)) return;
-    handleAnimation("appear");
-  };
-  const onBlur = (e: React.FocusEvent) => {
-    if (e.currentTarget.contains(e.relatedTarget as Node)) return;
-    handleAnimation("disappear");
-  };
-
-  useEffect(() => {
-    initPixels();
-    const observer = new ResizeObserver(() => {
-      initPixels();
-    });
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-    return () => {
-      observer.disconnect();
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [finalGap, finalSpeed, finalColors, finalNoFocus]);
 
   return (
-    <div
-      ref={containerRef}
-      className={`${styles.pixelCard} ${className}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onFocus={finalNoFocus ? undefined : onFocus}
-      onBlur={finalNoFocus ? undefined : onBlur}
-      tabIndex={finalNoFocus ? -1 : 0}
-    >
-      <canvas className={styles.pixelCanvas} ref={canvasRef} />
+    <div className={`pixel-card ${getVariantClass()} ${className}`}>
       {children}
+      <style jsx>{`
+        .pixel-card {
+          position: relative;
+          background-color: rgba(20, 10, 30, 0.4);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 0.75rem;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .pixel-card:before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 0.75rem;
+          padding: 1px;
+          background: linear-gradient(
+            to bottom right,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0)
+          );
+          -webkit-mask: linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+
+        .pixel-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pixel-card-blue:before {
+          background: linear-gradient(
+            to bottom right,
+            rgba(56, 189, 248, 0.7),
+            rgba(56, 189, 248, 0)
+          );
+        }
+
+        .pixel-card-pink:before {
+          background: linear-gradient(
+            to bottom right,
+            rgba(236, 72, 153, 0.7),
+            rgba(236, 72, 153, 0)
+          );
+        }
+
+        .pixel-card-green:before {
+          background: linear-gradient(
+            to bottom right,
+            rgba(74, 222, 128, 0.7),
+            rgba(74, 222, 128, 0)
+          );
+        }
+
+        .pixel-card-yellow:before {
+          background: linear-gradient(
+            to bottom right,
+            rgba(250, 204, 21, 0.7),
+            rgba(250, 204, 21, 0)
+          );
+        }
+
+        .pixel-card-purple:before {
+          background: linear-gradient(
+            to bottom right,
+            rgba(234, 142, 234, 0.7),
+            rgba(234, 142, 234, 0)
+          );
+        }
+      `}</style>
     </div>
   );
-}
+};
+
+export default PixelCard;
