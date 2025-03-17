@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Calendar, Brain, Lightbulb, Mic, ChevronLeft } from "lucide-react";
+import { ChartBar, Cpu, Code, Speech, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Head from "next/head";
 import PixelCard from "../../components/pixelcard";
@@ -192,7 +192,7 @@ function App() {
     {
       id: "finlit",
       title: "FinLit",
-      icon: <Lightbulb className="icon" />,
+      icon: <ChartBar className="icon" />,
       description:
         "A comprehensive financial literacy competition that challenges participants to demonstrate their understanding of financial markets, investment strategies, and economic principles.",
       highlights: [
@@ -209,7 +209,7 @@ function App() {
     {
       id: "betfortech",
       title: "Bet for Tech",
-      icon: <Calendar className="icon" />,
+      icon: <Cpu className="icon" />,
       description:
         "An innovative tech betting platform where participants predict future technology trends and developments. Compete to forecast the next big innovations in the tech industry.",
       highlights: [
@@ -226,7 +226,7 @@ function App() {
     {
       id: "code-roast",
       title: "Code Roast",
-      icon: <Brain className="icon" />,
+      icon: <Code className="icon" />,
       description:
         "A collaborative code review session where experts analyze and critique your code in a constructive environment. Get valuable feedback on your projects and improve your coding skills.",
       highlights: [
@@ -243,7 +243,7 @@ function App() {
     {
       id: "tedtalk",
       title: "TED Talk + Prizes",
-      icon: <Mic className="icon" />,
+      icon: <Speech className="icon" />,
       description:
         "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
       highlights: [
@@ -257,7 +257,10 @@ function App() {
       venue: "ALH 002",
       variant: "green", // Adding variant for PixelCard
     },
-  ];
+  ].map((event) => ({
+    ...event,
+    registrationUrl: `/register/${event.id}`, // Add registration URL for each event
+  }));
 
   const timelineEvents = events.sort((a, b) => {
     const dateA = new Date(`${a.date} ${a.time}`);
@@ -380,6 +383,17 @@ function App() {
                         <span className="venue-label">Venue:</span>
                         <span className="venue-text">{event.venue}</span>
                       </div>
+
+                      {/* Add register button */}
+                      <button
+                        className="register-button"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent triggering the card click
+                          window.open(event.registrationUrl, "_blank");
+                        }}
+                      >
+                        Register Now
+                      </button>
                     </div>
                   </div>
                 </PixelCard>
@@ -879,6 +893,9 @@ function App() {
             margin-top: 1.25rem;
             padding-top: 1.25rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
           }
 
           .venue {
@@ -895,6 +912,152 @@ function App() {
 
           .venue-text {
             font-size: 0.875rem;
+          }
+
+          .register-button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(
+              135deg,
+              rgba(234, 142, 234, 0.2),
+              rgba(156, 39, 176, 0.3)
+            );
+            border: 1px solid rgba(234, 142, 234, 0.5);
+            border-radius: 0.5rem;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+          }
+
+          .register-button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.2),
+              transparent
+            );
+            transition: all 0.4s ease;
+          }
+
+          .register-button:hover {
+            background: linear-gradient(
+              135deg,
+              rgba(234, 142, 234, 0.4),
+              rgba(156, 39, 176, 0.5)
+            );
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2),
+              0 0 10px rgba(234, 142, 234, 0.4);
+          }
+
+          .register-button:hover::after {
+            left: 100%;
+          }
+
+          .register-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Add variant-specific button styling */
+          .event-wrapper:nth-child(1) .register-button {
+            background: linear-gradient(
+              135deg,
+              rgba(156, 39, 176, 0.2),
+              rgba(106, 27, 154, 0.3)
+            );
+            border-color: rgba(156, 39, 176, 0.5);
+          }
+
+          .event-wrapper:nth-child(1) .register-button:hover {
+            background: linear-gradient(
+              135deg,
+              rgba(156, 39, 176, 0.4),
+              rgba(106, 27, 154, 0.5)
+            );
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2),
+              0 0 10px rgba(156, 39, 176, 0.4);
+          }
+
+          .event-wrapper:nth-child(2) .register-button {
+            background: linear-gradient(
+              135deg,
+              rgba(66, 165, 245, 0.2),
+              rgba(21, 101, 192, 0.3)
+            );
+            border-color: rgba(66, 165, 245, 0.5);
+          }
+
+          .event-wrapper:nth-child(2) .register-button:hover {
+            background: linear-gradient(
+              135deg,
+              rgba(66, 165, 245, 0.4),
+              rgba(21, 101, 192, 0.5)
+            );
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2),
+              0 0 10px rgba(66, 165, 245, 0.4);
+          }
+
+          .event-wrapper:nth-child(3) .register-button {
+            background: linear-gradient(
+              135deg,
+              rgba(236, 64, 122, 0.2),
+              rgba(194, 24, 91, 0.3)
+            );
+            border-color: rgba(236, 64, 122, 0.5);
+          }
+
+          .event-wrapper:nth-child(3) .register-button:hover {
+            background: linear-gradient(
+              135deg,
+              rgba(236, 64, 122, 0.4),
+              rgba(194, 24, 91, 0.5)
+            );
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2),
+              0 0 10px rgba(236, 64, 122, 0.4);
+          }
+
+          .event-wrapper:nth-child(4) .register-button {
+            background: linear-gradient(
+              135deg,
+              rgba(76, 175, 80, 0.2),
+              rgba(27, 94, 32, 0.3)
+            );
+            border-color: rgba(76, 175, 80, 0.5);
+          }
+
+          .event-wrapper:nth-child(4) .register-button:hover {
+            background: linear-gradient(
+              135deg,
+              rgba(76, 175, 80, 0.4),
+              rgba(27, 94, 32, 0.5)
+            );
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2),
+              0 0 10px rgba(76, 175, 80, 0.4);
+          }
+
+          /* Mobile responsiveness for the button */
+          @media (max-width: 480px) {
+            .register-button {
+              padding: 0.6rem 1.2rem;
+              font-size: 0.8rem;
+            }
           }
 
           .timeline-section {
