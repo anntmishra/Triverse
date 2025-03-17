@@ -123,7 +123,7 @@ const Home: NextPage = () => {
           <Squares
             speed={0.4}
             squareSize={40}
-            direction="up"
+            direction="down"
             borderColor="rgba(255, 255, 255, 0.2)" // Slightly more visible border
             hoverFillColor="rgba(234, 142, 234, 0.08)" // Subtle but noticeable hover color
           />
