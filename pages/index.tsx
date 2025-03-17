@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useTheme } from "../context/ThemeContext";
 import ParallaxSection from "../components/ParallaxSection";
+import Squares from "../components/squares";
 // const BackgroundEffects = dynamic(
 //   () => import("../components/BackgroundEffects"),
 //   {
@@ -116,6 +117,15 @@ const Home: NextPage = () => {
             className="background-img"
             loading="eager"
             fetchPriority="high"
+          />
+        </div>
+        <div className="squares-container">
+          <Squares
+            speed={0.4}
+            squareSize={40}
+            direction="up"
+            borderColor="rgba(255, 255, 255, 0.2)" // Slightly more visible border
+            hoverFillColor="rgba(234, 142, 234, 0.08)" // Subtle but noticeable hover color
           />
         </div>
         <div className="background-overlay"></div>
@@ -395,6 +405,17 @@ const Home: NextPage = () => {
           }
         }
 
+        .squares-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          opacity: 0.7;
+          pointer-events: none;
+        }
+
         .background-overlay {
           position: absolute;
           top: 0;
@@ -408,9 +429,15 @@ const Home: NextPage = () => {
             rgba(60, 20, 80, 0.9) 60%,
             rgba(10, 10, 20, 1) 100%
           );
-          /* Add noise texture */
           background-blend-mode: overlay;
           box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+          z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+          .squares-container {
+            opacity: 0.4;
+          }
         }
 
         .main {

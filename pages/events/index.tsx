@@ -454,14 +454,18 @@ function App() {
             </div>
           </div>
         </div>
+
         <Footer />
 
         <style jsx>{`
           .container {
             min-height: 100vh;
             position: relative;
-            padding-bottom: 4rem;
             overflow-x: hidden;
+            /* Remove the padding-bottom that's creating extra space */
+            padding-bottom: 0;
+            display: flex;
+            flex-direction: column;
           }
 
           .particle-canvas {
@@ -832,7 +836,8 @@ function App() {
           .date,
           .time {
             font-size: 0.875rem;
-            transition: all 0.3s ease;
+            /* Remove transition to prevent hover animation */
+            transition: none;
           }
 
           .date {
@@ -844,8 +849,10 @@ function App() {
             font-weight: 500;
           }
 
+          /* Remove the hover style for time that caused the color change */
           .event-wrapper:hover .time {
-            color: white;
+            /* Remove color change on hover */
+            color: #ea8eea;
           }
 
           .event-title {
@@ -1640,6 +1647,8 @@ function App() {
             .container {
               height: auto;
               min-height: 100vh;
+              /* Ensure no extra padding at bottom */
+              padding-bottom: 0;
             }
           }
 
@@ -1647,6 +1656,40 @@ function App() {
           @supports (-webkit-touch-callout: none) {
             .container {
               background-attachment: scroll;
+            }
+          }
+
+          /* Footer Styling */
+          .footer-wrapper {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            margin-top: 4rem;
+            backdrop-filter: blur(10px);
+            background: rgba(30, 15, 50, 0.5);
+            border-top: 1px solid rgba(234, 142, 234, 0.2);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            /* Ensure footer sticks to the bottom with no extra space */
+            margin-bottom: 0;
+          }
+
+          @media (max-width: 768px) {
+            .footer-wrapper {
+              margin-top: 2rem;
+            }
+          }
+
+          /* Fix for other responsive styles */
+          @media (max-width: 480px) {
+            .content {
+              padding-bottom: 2rem;
+            }
+          }
+
+          /* Fix for notched phones */
+          @supports (padding: max(0px)) {
+            .footer-wrapper {
+              padding-bottom: max(1rem, env(safe-area-inset-bottom));
             }
           }
         `}</style>
