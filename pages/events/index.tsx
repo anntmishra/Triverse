@@ -272,14 +272,14 @@ function App() {
           .content {
             max-width: 80rem;
             margin: 0 auto;
-            padding: 6rem 1rem 4rem;
+            padding: 0rem 0rem 0rem;
             position: relative;
             z-index: 1;
           }
 
           .header {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 1rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s forwards ease-out;
