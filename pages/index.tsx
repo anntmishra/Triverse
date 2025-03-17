@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useTheme } from "../context/ThemeContext";
 import ParallaxSection from "../components/ParallaxSection";
-import Squares from "../components/squares";
+
 // const BackgroundEffects = dynamic(
 //   () => import("../components/BackgroundEffects"),
 //   {
@@ -120,13 +120,13 @@ const Home: NextPage = () => {
           />
         </div>
         <div className="squares-container">
-          <Squares
+          {/* <Squares
             speed={0.4}
             squareSize={40}
             direction="down"
             borderColor="rgba(255, 255, 255, 0.2)" // Slightly more visible border
             hoverFillColor="rgba(234, 142, 234, 0.08)" // Subtle but noticeable hover color
-          />
+          /> */}
         </div>
         <div className="background-overlay"></div>
       </div>

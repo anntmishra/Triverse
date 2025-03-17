@@ -5,7 +5,7 @@ module.exports = {
       features: {
         "nesting-rules": true,
       },
-      autoprefixer: {},
     },
+    autoprefixer: {},
   },
 };

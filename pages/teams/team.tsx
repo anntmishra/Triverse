@@ -131,93 +131,29 @@ export default function TeamShowcase() {
   };
 
   return (
-    <div className="team-container">
-      <div className="notch">
-        <button onClick={handlePrevClick} className="nav-button">
+    <div style={styles.teamContainer}>
+      <div style={styles.notch}>
+        <button onClick={handlePrevClick} style={styles.navButton}>
           {"<"}
         </button>
-        <h2 className="team-name">{currentTeam.name}</h2>
-        <button onClick={handleNextClick} className="nav-button">
+        <h2 style={styles.teamName}>{currentTeam.name}</h2>
+        <button onClick={handleNextClick} style={styles.navButton}>
           {">"}
         </button>
       </div>
-      <ul className="team-members">
+      <ul style={styles.teamMembers}>
         {currentTeam.members.map((member, index) => (
-          <li key={index} className="member">
+          <li key={index} style={styles.member}>
             <img
               src={member.image}
               alt={member.name}
-              className="member-image"
+              style={styles.memberImage}
             />
             {member.name}
           </li>
         ))}
       </ul>
       <style jsx>{`
-        .team-container {
-          width: 400px;
-          margin: 50px auto;
-          padding: 20px;
-          border-radius: 10px;
-          background: #1e1e1e;
-          color: #fff;
-          text-align: center;
-          box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-          position: relative;
-        }
-
-        .notch {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 40px;
-          background: #ea8eea;
-          position: absolute;
-          top: -20px;
-          left: 50%;
-          transform: translateX(-50%);
-          border-radius: 10px 10px 0 0;
-        }
-
-        .nav-button {
-          background: none;
-          border: none;
-          color: #fff;
-          font-size: 20px;
-          cursor: pointer;
-          margin: 0 10px;
-        }
-
-        .team-name {
-          font-size: 24px;
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-
-        .team-members {
-          list-style: none;
-          padding: 0;
-          margin-top: 30px;
-        }
-
-        .member {
-          font-size: 16px;
-          margin: 10px 0;
-          opacity: 0;
-          animation: fadeIn 1s forwards;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .member-image {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -232,3 +168,63 @@ export default function TeamShowcase() {
     </div>
   );
 }
+
+const styles = {
+  teamContainer: {
+    width: "400px",
+    margin: "50px auto",
+    padding: "20px",
+    borderRadius: "10px",
+    background: "#1e1e1e",
+    color: "#fff",
+    textAlign: "center",
+    boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)",
+    position: "relative",
+  },
+  notch: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "40px",
+    background: "#ea8eea",
+    position: "absolute",
+    top: "-20px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    borderRadius: "10px 10px 0 0",
+  },
+  navButton: {
+    background: "none",
+    border: "none",
+    color: "#fff",
+    fontSize: "20px",
+    cursor: "pointer",
+    margin: "0 10px",
+  },
+  teamName: {
+    fontSize: "24px",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
+  teamMembers: {
+    listStyle: "none",
+    padding: "0",
+    marginTop: "30px",
+  },
+  member: {
+    fontSize: "16px",
+    margin: "10px 0",
+    opacity: "0",
+    animation: "fadeIn 1s forwards",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  memberImage: {
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    marginRight: "10px",
+  },
+};
