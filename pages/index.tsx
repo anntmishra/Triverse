@@ -60,9 +60,14 @@ const Home: NextPage = () => {
     };
   }, []);
 
-  // Memoize logo hover handlers for better performance
-  const handleLogoEnter = useCallback(() => setIsLogoHovered(true), []);
-  const handleLogoLeave = useCallback(() => setIsLogoHovered(false), []);
+  // Improve logo hover handlers for better performance and reliability
+  const handleLogoEnter = useCallback(() => {
+    setIsLogoHovered(true);
+  }, []);
+
+  const handleLogoLeave = useCallback(() => {
+    setIsLogoHovered(false);
+  }, []);
 
   return (
     <div
@@ -140,6 +145,8 @@ const Home: NextPage = () => {
                 className="triverse-logo"
                 onMouseEnter={handleLogoEnter}
                 onMouseLeave={handleLogoLeave}
+                onTouchStart={handleLogoEnter}
+                onTouchEnd={handleLogoLeave}
               >
                 <img
                   src="/assets/logonobg (1).png"
@@ -614,6 +621,11 @@ const Home: NextPage = () => {
           animation: logoEntrance 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
           background: transparent;
           cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .triverse-logo:hover {
+          transform: scale(1.02);
         }
 
         @keyframes logoEntrance {

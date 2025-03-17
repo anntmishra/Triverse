@@ -109,7 +109,7 @@ function App() {
   return (
     <>
       <Head>
-        <title>Events | TRIVERSE 2.0</title>
+        <title>Events</title>
         <meta
           name="description"
           content="Explore the exciting tech events at TRIVERSE 2.0"
@@ -118,6 +118,21 @@ function App() {
       </Head>
 
       <div className="container">
+        {/* Fix background image path */}
+        <div className="background-layer">
+          <div className="img-background">
+            <img
+              src="/assets/website2.png"
+              alt="Tech Event Background"
+              className="background-img"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </div>
+          {/* Add a semi-transparent overlay to improve content visibility */}
+          <div className="background-overlay"></div>
+        </div>
+
         <Link href="/" className="back-link">
           <ChevronLeft className="back-icon" />
           <span>Back to Home</span>
@@ -233,12 +248,59 @@ function App() {
         <style jsx>{`
           .container {
             min-height: 100vh;
-            background-image: url("/assets/website.png");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             position: relative;
             padding-bottom: 4rem;
+          }
+
+          .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+          }
+
+          .img-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          .background-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: subtle-zoom 60s infinite alternate ease-in-out;
+            will-change: transform;
+            transform: translateZ(0); /* Force hardware acceleration */
+          }
+
+          @keyframes subtle-zoom {
+            0% {
+              transform: scale(1);
+            }
+            100% {
+              transform: scale(1.05);
+            }
+          }
+
+          /* Add a semi-transparent overlay for better content visibility */
+          .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              to bottom,
+              rgba(60, 20, 80, 0.8),
+              rgba(30, 15, 50, 0.85)
+            );
+            pointer-events: none;
           }
 
           .container::before {
@@ -248,11 +310,6 @@ function App() {
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(
-              to bottom,
-              rgba(25, 10, 40, 0.92),
-              rgba(30, 15, 50, 0.88)
-            );
             pointer-events: none;
           }
 
