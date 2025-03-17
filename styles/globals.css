@@ -1,0 +1,96 @@
+/* Root level variables and defaults */
+:root {
+  color-scheme: dark !important;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: white !important;
+  background-color: #111111 !important;
+  /* Hide default cursor when using custom cursor */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure dark theme is always applied */
+html {
+  color-scheme: dark;
+  background-color: #111111 !important;
+}
+
+/* Remove media query to always apply dark theme */
+body {
+  color: white !important;
+  background: #111111 !important;
+}
+
+/* Prevent white flash during page transitions */
+#__next {
+  background-color: #111111 !important;
+}
+
+/* Ensure dark theme even on Light mode preference */
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: dark !important;
+  }
+
+  html,
+  body,
+  #__next {
+    background-color: #111111 !important;
+    color: white !important;
+  }
+}
+
+/* Critical rendering styles to prevent flashing */
+html::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111111;
+  z-index: -1;
+}
+
+/* Remove cursor-related styles */
+a,
+button,
+.dock-item,
+.icon-item,
+.sponsor-item,
+.triverse-logo,
+.register-button,
+.explore-button {
+  cursor: pointer; /* Restore pointer cursor on interactive elements */
+}
+
+/* Responsive handling */
+@media (max-width: 768px) {
+  html,
+  body {
+    cursor: auto; /* Restore default cursor on mobile devices */
+  }
+
+  .custom-cursor {
+    display: none; /* Hide custom cursor on mobile */
+  }
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
