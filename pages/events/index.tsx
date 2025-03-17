@@ -10,7 +10,11 @@ function App() {
 
   useEffect(() => {
     // Animation delay for page elements
-    setIsLoaded(true);
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const events = [
@@ -110,6 +114,7 @@ function App() {
           name="description"
           content="Explore the exciting tech events at TRIVERSE 2.0"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <div className="container">
@@ -143,7 +148,17 @@ function App() {
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
                 onClick={() => setSelectedEvent(event.id)}
               >
-                <PixelCard variant={event.variant} className="event-card-pixel">
+                <PixelCard
+                  variant={
+                    event.variant as
+                      | "blue"
+                      | "pink"
+                      | "yellow"
+                      | "default"
+                      | undefined
+                  }
+                  className="event-card-pixel"
+                >
                   <div className="card-content">
                     <div className="card-header">
                       <div className="icon-container">{event.icon}</div>
@@ -272,7 +287,7 @@ function App() {
           .content {
             max-width: 80rem;
             margin: 0 auto;
-            padding: 0rem 0rem 0rem;
+            padding: 1rem 1rem 4rem;
             position: relative;
             z-index: 1;
           }
@@ -889,10 +904,26 @@ function App() {
               height: 2rem;
             }
           }
+
+          /* Ensure scrolling works properly on all devices */
+          @media (max-height: 800px) {
+            .container {
+              height: auto;
+              min-height: 100vh;
+            }
+          }
+
+          /* Fix potential Safari background-attachment issues */
+          @supports (-webkit-touch-callout: none) {
+            .container {
+              background-attachment: scroll;
+            }
+          }
         `}</style>
       </div>
     </>
   );
 }
 
+// Explicitly export with named export for better Next.js compatibility
 export default App;
