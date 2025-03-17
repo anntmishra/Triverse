@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Calendar, Brain, Lightbulb, Mic, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Head from "next/head";
@@ -7,6 +7,9 @@ import PixelCard from "../../components/pixelcard";
 function App() {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Animation delay for page elements
@@ -15,6 +18,174 @@ function App() {
     }, 100);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  // Mouse parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        setMousePosition({
+          x: e.clientX / window.innerWidth - 0.5,
+          y: e.clientY / window.innerHeight - 0.5,
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  // Particle animation effect
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let particles: Array<{
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      color: string;
+      opacity: number;
+      lifespan: number;
+      currentLife: number;
+    }> = [];
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    // Initialize particles
+    const initParticles = () => {
+      particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          color: getRandomColor(),
+          opacity: Math.random() * 0.5 + 0.1,
+          lifespan: 100 + Math.random() * 100,
+          currentLife: 0,
+        });
+      }
+    };
+
+    const getRandomColor = () => {
+      const colors = ["#EA8EEA", "#9C27B0", "#4A148C", "#7B1FA2", "#6A1B9A"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    };
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw and update particles
+      particles.forEach((particle, index) => {
+        particle.currentLife++;
+        if (particle.currentLife >= particle.lifespan) {
+          particles[index] = {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 0.5,
+            speedX: (Math.random() - 0.5) * 0.3,
+            speedY: (Math.random() - 0.5) * 0.3,
+            color: getRandomColor(),
+            opacity: Math.random() * 0.5 + 0.1,
+            lifespan: 100 + Math.random() * 100,
+            currentLife: 0,
+          };
+        }
+
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        // Bounce off edges
+        if (particle.x > canvas.width || particle.x < 0) {
+          particle.speedX = -particle.speedX;
+        }
+        if (particle.y > canvas.height || particle.y < 0) {
+          particle.speedY = -particle.speedY;
+        }
+
+        // Calculate opacity based on lifecycle
+        const lifecycleOpacity =
+          particle.opacity *
+          (1 - Math.abs((particle.currentLife / particle.lifespan) * 2 - 1));
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = `${particle.color}${Math.floor(
+          lifecycleOpacity * 255
+        ).toString(16)}`;
+        ctx.fill();
+      });
+
+      // Draw light beams
+      drawLightBeams(ctx, canvas.width, canvas.height);
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    // Create light beam effect
+    const drawLightBeams = (
+      context: CanvasRenderingContext2D,
+      width: number,
+      height: number
+    ) => {
+      const beamCount = 5;
+
+      for (let i = 0; i < beamCount; i++) {
+        const x = (width / beamCount) * i + (width / beamCount) * 0.5;
+        const y = 0;
+
+        // Create gradient
+        const gradient = context.createLinearGradient(x, y, x, height * 0.8);
+
+        gradient.addColorStop(0, "rgba(234, 142, 234, 0.15)");
+        gradient.addColorStop(0.5, "rgba(234, 142, 234, 0.05)");
+        gradient.addColorStop(1, "rgba(234, 142, 234, 0)");
+
+        context.beginPath();
+        context.moveTo(x, y);
+
+        // Calculate beam width
+        const topWidth = 50 + Math.sin(Date.now() * 0.001 + i) * 20;
+        const bottomWidth = 150 + Math.sin(Date.now() * 0.0015 + i) * 50;
+
+        // Draw beam shape
+        context.lineTo(x - topWidth / 2, y);
+        context.lineTo(x - bottomWidth / 2, height * 0.8);
+        context.lineTo(x + bottomWidth / 2, height * 0.8);
+        context.lineTo(x + topWidth / 2, y);
+
+        context.closePath();
+        context.fillStyle = gradient;
+        context.fill();
+      }
+    };
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    initParticles();
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const events = [
@@ -105,10 +276,20 @@ function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <div className="container">
-        {/* Fix background image path */}
+      <div className="container" ref={containerRef}>
+        {/* Particle canvas */}
+        <canvas ref={canvasRef} className="particle-canvas"></canvas>
+
+        {/* Background with enhanced effects */}
         <div className="background-layer">
-          <div className="img-background">
+          <div
+            className="img-background"
+            style={{
+              transform: `translate(${mousePosition.x * -20}px, ${
+                mousePosition.y * -20
+              }px)`,
+            }}
+          >
             <img
               src="/assets/website2.png"
               alt="Tech Event Background"
@@ -116,9 +297,22 @@ function App() {
               loading="eager"
               fetchPriority="high"
             />
+            <div className="light-beam-container">
+              {[...Array(5)].map((_, i) => (
+                <div
+                  key={i}
+                  className="light-beam"
+                  style={{
+                    left: `${(i + 1) * 20 - 10}%`,
+                    animationDelay: `${i * 0.5}s`,
+                  }}
+                ></div>
+              ))}
+            </div>
           </div>
-          {/* Add a semi-transparent overlay to improve content visibility */}
+          {/* Enhanced overlay with gradient animation */}
           <div className="background-overlay"></div>
+          <div className="vignette-effect"></div>
         </div>
 
         <Link href="/" className="back-link">
@@ -238,6 +432,17 @@ function App() {
             min-height: 100vh;
             position: relative;
             padding-bottom: 4rem;
+            overflow-x: hidden;
+          }
+
+          .particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
           }
 
           .background-layer {
@@ -256,6 +461,7 @@ function App() {
             left: 0;
             width: 100%;
             height: 100%;
+            transition: transform 0.1s ease-out;
           }
 
           .background-img {
@@ -265,6 +471,7 @@ function App() {
             animation: subtle-zoom 60s infinite alternate ease-in-out;
             will-change: transform;
             transform: translateZ(0); /* Force hardware acceleration */
+            filter: brightness(0.8) contrast(1.1);
           }
 
           @keyframes subtle-zoom {
@@ -276,7 +483,53 @@ function App() {
             }
           }
 
-          /* Add a semi-transparent overlay for better content visibility */
+          .light-beam-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            mix-blend-mode: screen;
+          }
+
+          .light-beam {
+            position: absolute;
+            top: -50%;
+            width: 100px;
+            height: 150vh;
+            background: linear-gradient(
+              to bottom,
+              rgba(234, 142, 234, 0.15) 0%,
+              rgba(234, 142, 234, 0.05) 50%,
+              rgba(234, 142, 234, 0) 100%
+            );
+            transform: rotate(20deg) translateY(-100px);
+            filter: blur(30px);
+            animation: beam-movement 20s infinite alternate ease-in-out;
+            opacity: 0.6;
+          }
+
+          @keyframes beam-movement {
+            0% {
+              transform: rotate(20deg) translateY(-100px) translateX(-50px);
+              width: 100px;
+              opacity: 0.4;
+            }
+            50% {
+              transform: rotate(15deg) translateY(-50px) translateX(30px);
+              width: 140px;
+              opacity: 0.7;
+            }
+            100% {
+              transform: rotate(25deg) translateY(-150px) translateX(70px);
+              width: 80px;
+              opacity: 0.5;
+            }
+          }
+
+          /* Enhanced background overlay with gradient animation */
           .background-overlay {
             position: absolute;
             top: 0;
@@ -284,11 +537,38 @@ function App() {
             width: 100%;
             height: 100%;
             background: linear-gradient(
-              to bottom,
-              rgba(60, 20, 80, 0.8),
-              rgba(30, 15, 50, 0.85)
+              135deg,
+              rgba(60, 20, 80, 0.85),
+              rgba(30, 15, 50, 0.9),
+              rgba(90, 30, 100, 0.8)
             );
+            animation: gradient-shift 15s infinite alternate ease-in-out;
+            mix-blend-mode: multiply;
             pointer-events: none;
+          }
+
+          @keyframes gradient-shift {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+
+          /* Vignette effect */
+          .vignette-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.7);
+            pointer-events: none;
+            z-index: 2;
           }
 
           .container::before {
@@ -963,6 +1243,18 @@ function App() {
           @supports (-webkit-touch-callout: none) {
             .container {
               background-attachment: scroll;
+            }
+          }
+
+          /* Add responsive adjustments for background effects */
+          @media (max-width: 768px) {
+            .light-beam {
+              opacity: 0.4;
+              width: 60px;
+            }
+
+            .vignette-effect {
+              box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
             }
           }
         `}</style>
