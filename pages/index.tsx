@@ -7,12 +7,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useTheme } from "../context/ThemeContext";
 import ParallaxSection from "../components/ParallaxSection";
-const BackgroundEffects = dynamic(
-  () => import("../components/BackgroundEffects"),
-  {
-    ssr: false,
-  }
-);
+// const BackgroundEffects = dynamic(
+//   () => import("../components/BackgroundEffects"),
+//   {
+//     ssr: false,
+//   }
 
 const Home: NextPage = () => {
   const { theme: _ } = useTheme();
@@ -92,9 +91,6 @@ const Home: NextPage = () => {
         <meta name="theme-color" content="#111111" />
       </Head>
 
-      {/* Only load background effects when page is loaded */}
-      {isPageLoaded && <BackgroundEffects />}
-
       <div className="background-layer">
         <div className="img-background">
           <img
@@ -102,7 +98,7 @@ const Home: NextPage = () => {
             alt="Triverse Background"
             className="background-img"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </div>
         <div className="background-overlay"></div>
@@ -149,7 +145,7 @@ const Home: NextPage = () => {
                   src="/assets/logonobg (1).png"
                   alt="TRIVERSE 2.0"
                   loading="eager"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
               </div>
               <div className="divider"></div>

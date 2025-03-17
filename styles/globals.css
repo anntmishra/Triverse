@@ -1,3 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply p-0 m-0 overflow-x-hidden bg-transparent text-white;
+  }
+
+  body {
+    @apply min-h-screen;
+  }
+}
+
 /* Root level variables and defaults */
 :root {
   color-scheme: dark !important;
@@ -93,4 +108,22 @@ button,
 .icon {
   width: 2rem;
   height: 2rem;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 text-base font-semibold tracking-wider uppercase bg-primary-light rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:translate-y-0 active:shadow-md;
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 text-base font-medium border-2 border-primary-light rounded-full bg-opacity-15 bg-primary-light transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:bg-opacity-25;
+  }
+
+  .section-badge {
+    @apply inline-block px-4 py-1 text-sm font-semibold tracking-wider text-primary-light uppercase bg-primary-light bg-opacity-15 rounded-full border border-primary-light border-opacity-30 shadow-md;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-b from-white to-purple-200 bg-clip-text text-transparent;
+  }
 }
