@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MemberCard from "./MemberCard";
-import { Team } from "./type";
+import { Team } from "../../types/team";
 
 interface TeamSectionProps {
   team: Team;
