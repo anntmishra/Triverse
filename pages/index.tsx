@@ -144,14 +144,6 @@ const Home: NextPage = () => {
             <div className="sponsor-item">
               <img src="/assets/bennettlogo.png" alt="Bennett University" />
             </div>
-            <div className="sponsor-divider"></div>
-            <div className="sponsor-item">
-              <img src="/assets/eth.png" alt="ETH India" />
-            </div>
-            <div className="sponsor-divider"></div>
-            <div className="sponsor-item">
-              <img src="/assets/dev.png" alt="Devfolio" />
-            </div>
           </div>
         </div>
 

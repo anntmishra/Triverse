@@ -1,5 +1,5 @@
 import React from "react";
-import { Member } from "../../types/team";
+import { Member } from "./team";
 
 interface MemberCardProps {
   member: Member;

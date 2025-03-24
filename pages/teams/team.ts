@@ -21,3 +21,5 @@ export interface Team {
   heads: Member[];
   members: Member[];
 }
+
+export default Member;

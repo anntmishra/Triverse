@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TeamSection from "./TeamSection";
-import { teamData } from "../../data/teamData";
+import { teamData } from "./teamData";
 
 const TeamPage: React.FC = () => {
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
