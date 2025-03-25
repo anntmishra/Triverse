@@ -109,7 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
               </a>
             </Link>
 
-            <Link href="/teams/team" legacyBehavior>
+            <Link href="/teams/TeamPage" legacyBehavior>
               <a
                 className={`dock-item ${
                   router.pathname.startsWith("/teams") ? "active" : ""
@@ -135,10 +135,10 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
               </a>
             </Link>
 
-            <Link href="/contact" legacyBehavior>
+            <Link href="/sponsor" legacyBehavior>
               <a
                 className={`dock-item ${
-                  router.pathname === "/contact" ? "active" : ""
+                  router.pathname === "/sponsor" ? "active" : ""
                 }`}
               >
                 <div className="dock-icon">
@@ -157,7 +157,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
                     <path d="M8 12h8"></path>
                   </svg>
                 </div>
-                <span className="dock-label">Contact</span>
+                <span className="dock-label">Sponsor</span>
               </a>
             </Link>
 

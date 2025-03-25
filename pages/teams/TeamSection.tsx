@@ -1,7 +1,30 @@
 import React, { useState } from "react";
 import MemberCard from "./MemberCard";
-import { Team } from "./team";
 
+interface Team {
+  id: string;
+  name: string;
+  description: string;
+  heads: {
+    id: string;
+    name: string;
+    position: string;
+    avatar: string;
+    bio: string;
+    social: {
+      linkedin?: string;
+      twitter?: string;
+      github?: string;
+      email?: string;
+    };
+  }[];
+  members: {
+    id: string;
+    name: string;
+    position: string;
+    bio: string;
+  }[];
+}
 interface TeamSectionProps {
   team: Team;
 }

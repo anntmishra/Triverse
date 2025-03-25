@@ -1,4 +1,4 @@
-import TeamComponent  from "../pages/teams/team";
+
 
 interface Team {
   id: string;
