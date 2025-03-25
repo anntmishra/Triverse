@@ -17,6 +17,13 @@ body {
   width: 100%;
 }
 
+/* Remove underline from all links */
+a {
+  text-decoration: none;
+}
+
+/* Optional: Add underline on hover for better UX */
+
 /* Improve responsive layout behaviors */
 * {
   box-sizing: border-box;
