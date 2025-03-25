@@ -1,250 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Add these styles to fix common alignment issues */
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #0a0a1a;
-  color: white;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* Root level variables and defaults */
-:root {
-  color-scheme: dark !important;
-  --primary-light: #e9d5ff;
-  --bright-pink: #ea8eea;
-  --primary-purple: #925da1;
-  --dark-purple: #4c1d95;
-}
-
-/* Ensure dark theme is always applied */
-html {
-  color-scheme: dark;
-  background-color: #111111 !important;
-}
-
-/* Remove media query to always apply dark theme */
-body {
-  color: white !important;
-  background: #111111 !important;
-}
-
-/* Prevent white flash during page transitions */
-#__next {
-  background-color: #111111 !important;
-}
-
-/* Ensure dark theme even on Light mode preference */
-@media (prefers-color-scheme: light) {
-  html {
-    color-scheme: dark !important;
-  }
-
-  html,
-  body,
-  #__next {
-    background-color: #111111 !important;
-    color: white !important;
-  }
-}
-
-/* Critical rendering styles to prevent flashing */
-html::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #111111;
-  z-index: -1;
-}
-
-/* Cursor styles */
-a,
-button,
-.dock-item,
-.icon-item,
-.sponsor-item,
-.triverse-logo,
-.register-button,
-.explore-button {
-  cursor: pointer;
-}
-
-/* Responsive handling */
-@media (max-width: 768px) {
-  html,
-  body {
-    cursor: auto;
-  }
-
-  .custom-cursor {
-    display: none;
-  }
-}
-
-.icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-/* Component styles */
-.btn-primary {
-  color: white;
-  background-color: rgba(234, 142, 234, 0.6);
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: inline-block;
-}
-
-.btn-primary:hover {
-  background-color: rgba(234, 142, 234, 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.btn-outline {
-  color: white;
-  border: 1px solid var(--bright-pink);
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: inline-block;
-}
-
-.btn-outline:hover {
-  background-color: rgba(234, 142, 234, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.section-badge {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--primary-light);
-  background-color: rgba(233, 213, 255, 0.15);
-  border-radius: 9999px;
-  border: 1px solid rgba(233, 213, 255, 0.3);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.section-title {
-  font-family: "Playfair Display", serif;
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(to bottom, #ffffff, #e0c5e3);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@media (min-width: 768px) {
-  .section-title {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-  }
-}
-
-.text-primary-light {
-  color: var(--primary-light);
-}
-
-.bg-primary-gradient {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(25, 10, 40, 0.92),
-    rgba(30, 15, 50, 0.88)
-  );
-}
-
-.text-gradient {
-  background-image: linear-gradient(to bottom, #ffffff, #e0c5e3);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
+/* Make sure elements are properly centered */
 .container-main {
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+  width: 100%; /* Ensure full width */
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+/* Fix potential overflow issues */
+html,
+body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
 }
 
-.card {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+/* Improve responsive layout behaviors */
+* {
+  box-sizing: border-box;
+  max-width: 100%; /* Prevent elements from overflowing */
 }
 
-.card-hover:hover {
-  border-color: rgba(234, 142, 234, 0.4);
-  background-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(234, 142, 234, 0.2);
-  transform: translateY(-4px);
+/* Add flex utilities if needed */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Utility styles */
-.text-shadow-sm {
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.text-shadow-md {
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(234, 142, 234, 0.3);
-}
-
-.clip-path-left {
-  clip-path: polygon(0 0, 94% 0, 100% 50%, 94% 100%, 0 100%);
-}
-
-.clip-path-right {
-  clip-path: polygon(6% 0, 100% 0, 100% 100%, 6% 100%, 0 50%);
-}
-
-/* Font face declaration */
-@font-face {
-  font-family: "Playfair Display";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/Playfair-Display.woff2") format("woff2");
+/* Fix alignment at different breakpoints */
+@media (max-width: 768px) {
+  .container-main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
