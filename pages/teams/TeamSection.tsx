@@ -6,10 +6,10 @@ interface Team {
   name: string;
   description: string;
   heads: {
-    id: string;
+    id?: string;
     name: string;
     position: string;
-    avatar: string;
+    avatar?: string;
     bio: string;
     social: {
       linkedin?: string;
@@ -19,7 +19,7 @@ interface Team {
     };
   }[];
   members: {
-    id: string;
+    id?: string;
     name: string;
     position: string;
     bio: string;
