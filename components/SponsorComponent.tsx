@@ -1,5 +1,5 @@
 import React from "react";
-import sponsorsData from "./sponsordata";
+import sponsorsData from "../data/sponsordata";
 
 interface Sponsor {
   id: string;

@@ -1,5 +1,5 @@
 import React from "react";
-import {teamData} from "./teamdata"; // Assuming the previous artifact is saved as teamdata.ts
+import {teamData} from "../../data/teamData"; 
 
 interface Social {
   github?: string;
@@ -36,7 +36,7 @@ const TeamComponent: React.FC = () => {
 
       <h3 className="mt-4 text-xl font-semibold">Team Leads</h3>
       <div className="flex gap-4">
-        {team.heads.map((head) => (
+        {team.heads.map((head: Member) => (
           <div key={head.id} className="p-2 border rounded-md text-center">
             <img
               src={head.avatar || "default-avatar.png"}
@@ -58,7 +58,7 @@ const TeamComponent: React.FC = () => {
 
       <h3 className="mt-4 text-xl font-semibold">Team Members</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {team.members.map((member) => (
+        {team.members.map((member: Member) => (
           <div key={member.id} className="p-2 border rounded-md text-center">
             <img
               src={member.avatar || "default-avatar.png"}

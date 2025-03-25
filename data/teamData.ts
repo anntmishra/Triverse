@@ -1,4 +1,29 @@
-import { Team } from "./team";
+import TeamComponent  from "../pages/teams/team";
+
+interface Team {
+  id: string;
+  name: string;
+  description: string;
+  heads: {
+    id: string;
+    name: string;
+    position: string;
+    avatar: string;
+    bio: string;
+    social: {
+      linkedin?: string;
+      twitter?: string;
+      github?: string;
+      email?: string;
+    };
+  }[];
+  members: {
+    id: string;
+    name: string;
+    position: string;
+    bio: string;
+  }[];
+}
 
 export const teamData: Team[] = [
   {

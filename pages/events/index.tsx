@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChartBar, Cpu, Code, Speech, ChevronLeft } from "lucide-react";
+import { Cpu, Code, Speech, ChevronLeft, BarChart } from "lucide-react";
 import Link from "next/link";
 import Head from "next/head";
 
@@ -194,7 +194,7 @@ function App() {
     {
       id: "finlit",
       title: "FinLit",
-      icon: <ChartBar className="icon" />,
+      icon: <BarChart className="icon" />,
       description:
         "A comprehensive financial literacy competition that challenges participants to demonstrate their understanding of financial markets, investment strategies, and economic principles.",
       highlights: [
