@@ -13,7 +13,7 @@
 /* Fix potential overflow issues */
 html,
 body {
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
   width: 100%;
 }
 

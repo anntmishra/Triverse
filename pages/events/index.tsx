@@ -207,6 +207,7 @@ function App() {
       time: "5:30 PM",
       venue: "ALH 002",
       variant: "purple", // Adding variant for PixelCard
+      registrationUrl: "https://forms.gle/534XMo5YDYeVfpuC8",
     },
     {
       id: "betfortech",
@@ -224,6 +225,8 @@ function App() {
       time: "5:30 PM",
       venue: "B Block Admission Lounge",
       variant: "blue", // Adding variant for PixelCard
+      registrationUrl:
+        "https://docs.google.com/forms/d/e/1FAIpQLSeM3OCOlmS7l8yGrc_LWLDm-AZ6pzvj6ZCIdUycSPzuvm5qzQ/viewform?usp=header",
     },
     {
       id: "code-roast",
@@ -241,6 +244,8 @@ function App() {
       time: "7:00 PM onwards",
       venue: "103 BLA",
       variant: "pink", // Adding variant for PixelCard
+      registrationUrl:
+        "https://docs.google.com/forms/d/e/1FAIpQLSdXeDcHd0dz6N7vFLfm8ApzIJ3YkGqbzi3yuSRhkedV_WMSkw/viewform?usp=dialog",
     },
     {
       id: "tedtalk",
@@ -258,11 +263,9 @@ function App() {
       time: "4 PM – 8 PM",
       venue: "ALH 002",
       variant: "green", // Adding variant for PixelCard
+      registrationUrl: "/register/tedtalk", // Keep default URL for this event
     },
-  ].map((event) => ({
-    ...event,
-    registrationUrl: `/register/${event.id}`, // Add registration URL for each event
-  }));
+  ];
 
   const timelineEvents = events.sort((a, b) => {
     const dateA = new Date(`${a.date} ${a.time}`);
@@ -398,7 +401,7 @@ function App() {
                         <span className="venue-text">{event.venue}</span>
                       </div>
 
-                      {/* Add register button */}
+                      {/* Use the external link registration URLs */}
                       <button
                         className="register-button"
                         onClick={(e) => {
