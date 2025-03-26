@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import burger from './Burger_Singh-removebg-preview.png'
 import waffle from './waffle-removebg-preview.png'
 import interview from './interview-removebg-preview.png'
@@ -30,8 +29,7 @@ const sponsorsData = [
     id: '5',
     name: 'Interview Buddy',
     logo: interview.src,
-  },
-  
+  }
 ];
 
 interface Sponsor {
@@ -47,40 +45,134 @@ interface SponsorsComponentProps {
 const SponsorsComponent: React.FC<SponsorsComponentProps> = ({ 
   sponsors = sponsorsData 
 }) => {
+  const styles: Record<string, React.CSSProperties> = {
+    container: {
+      position: 'relative',
+      width: '100%',
+      height: '100vh',
+      margin: 0,
+      padding: 0,
+      overflow: 'hidden',
+    },
+    body: {
+      margin: 0,
+      padding: 0,
+    },
+    html: {
+      margin: 0,
+      padding: 0,
+      overflow: 'hidden',
+    },
+    background: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    },
+    content: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 0,
+    },
+    title: {
+      fontSize: '3rem',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: '2rem',
+      color: 'white',
+      fontFamily: 'Arial, sans-serif',
+    },
+    grid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '1rem',
+      width: '100%',
+      maxWidth: '100%',
+      padding: '0 1rem',
+      boxSizing: 'border-box',
+    },
+    sponsorItem: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+    },
+    logoContainer: {
+      width: '100%',
+      maxWidth: '250px',
+      aspectRatio: '1 / 1',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    logo: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain',
+      opacity: 0.8,
+    },
+  };
+
+  // Add global style to remove margins
+  React.useEffect(() => {
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = `
+      body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    `;
+    document.head.appendChild(styleTag);
+
+    return () => {
+      document.head.removeChild(styleTag);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full">
-      <div className="relative w-auto h-screen">
-        <img
-          src="/assets/website.png"
-          alt="Triverse Background"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-          fetchPriority="high"
-        />
+    <div style={styles.container}>
+      {/* Background Image */}
+      <img
+        src="/assets/website.png"
+        alt="Triverse Background"
+        style={styles.background}
+        loading="eager"
+        fetchPriority="high"
+      />
+      
+      {/* Overlay with Sponsors Grid */}
+      <div style={styles.content}>
+        <h2 style={styles.title}>
+          Our Event Sponsors
+        </h2>
         
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 py-8">
-          <h2 className="text-5xl font-bold text-center mb-16 text-white font-heading">Our Event Sponsors</h2>
-          <div className="grid grid-cols-3 gap-8 max-w-6xl w-full">
-            {sponsors.map((sponsor) => (
-              <motion.div 
-                key={sponsor.id}
-                className="flex flex-col items-center justify-center text-center group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="w-full max-w-[250px] aspect-video mb-2">
-                  <img 
-                    src={sponsor.logo} 
-                    alt={`${sponsor.name} logo`}
-                    className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                  />
-                </div>
-                <p className="text-lg font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                  {sponsor.name}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+        {/* 3x3 Grid */}
+        <div style={styles.grid}>
+          {sponsors.map((sponsor) => (
+            <div 
+              key={sponsor.id}
+              style={styles.sponsorItem}
+            >
+              <div style={styles.logoContainer}>
+                <img 
+                  src={sponsor.logo} 
+                  alt={`${sponsor.name} logo`}
+                  style={styles.logo}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
