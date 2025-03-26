@@ -1,10 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Cpu, Code, Speech, ChevronLeft, BarChart } from "lucide-react";
+import { Cpu, Code, Speech, ChevronLeft, BarChart, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import Head from "next/head";
 
 import PixelCard from "../../components/pixelcard";
 import Footer from "@/components/Footer";
+
+// Define the event interface
+interface Event {
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  description: string;
+  highlights: string[];
+  date: string;
+  time: string;
+  venue: string;
+  variant: string;
+  registrationUrl: string;
+  hideRegister?: boolean;
+}
 
 function App() {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
@@ -190,7 +205,7 @@ function App() {
     };
   }, []);
 
-  const events = [
+  const events: Event[] = [
     {
       id: "finlit",
       title: "FinLit",
@@ -247,6 +262,25 @@ function App() {
       registrationUrl:
         "https://docs.google.com/forms/d/e/1FAIpQLSdXeDcHd0dz6N7vFLfm8ApzIJ3YkGqbzi3yuSRhkedV_WMSkw/viewform?usp=dialog",
     },
+    {
+      id: "unlocking-tomorrow",
+      title: "Unlocking Tomorrow",
+      icon: <Lightbulb className="icon" />,
+      description:
+        "A captivating experience designed to introduce school students to the world of computer science, artificial intelligence, and emerging technologies. Through expert talks and hands-on sessions, young minds will explore the limitless possibilities of tech.",
+      highlights: [
+        "Expert technology talks",
+        "Hands-on AI workshops",
+        "Interactive tech demonstrations",
+        "Future career insights",
+      ],
+      date: "March 29, 2025",
+      time: "10:00 AM",
+      venue: "N block",
+      variant: "green", // Adding variant for PixelCard
+      registrationUrl: "https://forms.gle/example",
+      hideRegister: true
+    },
 
     // {
     //   id: "tedtalk",
@@ -266,10 +300,7 @@ function App() {
     //   venue: "ALH 002",
     //   variant: "green", // Adding variant for PixelCard
     // },
-  ].map((event) => ({
-    ...event,
-    registrationUrl: event.link // Use each event's link property
-  }));
+  ];
 
   const timelineEvents = events.sort((a, b) => {
     const dateA = new Date(`${a.date} ${a.time}`);
@@ -406,15 +437,17 @@ function App() {
                       </div>
 
                       {/* Use the external link registration URLs */}
-                      <button
-                        className="register-button"
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent triggering the card click
-                          window.open(event.registrationUrl, "_blank");
-                        }}
-                      >
-                        Register Now
-                      </button>
+                      {!event.hideRegister && (
+                        <button
+                          className="register-button"
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent triggering the card click
+                            window.open(event.registrationUrl, "_blank");
+                          }}
+                        >
+                          Register Now
+                        </button>
+                      )}
                     </div>
                   </div>
                 </PixelCard>
