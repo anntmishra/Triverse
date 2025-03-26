@@ -161,7 +161,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
               </a>
             </Link>
 
-            <Link href="/register" legacyBehavior>
+            <Link href="https://linktr.ee/ieee_bu_" legacyBehavior>
               <a
                 className={`dock-item startup-icon ${
                   router.pathname === "/register" ? "active" : ""
@@ -176,7 +176,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
                     <polygon points="12 2 22 20 2 20" />
                   </svg>
                 </div>
-                <span className="dock-label">Register</span>
+                <span className="dock-label">Join Us</span>
               </a>
             </Link>
           </nav>
