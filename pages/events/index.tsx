@@ -247,25 +247,29 @@ function App() {
       registrationUrl:
         "https://docs.google.com/forms/d/e/1FAIpQLSdXeDcHd0dz6N7vFLfm8ApzIJ3YkGqbzi3yuSRhkedV_WMSkw/viewform?usp=dialog",
     },
-    {
-      id: "tedtalk",
-      title: "TED Talk + Prizes",
-      icon: <Speech className="icon" />,
-      description:
-        "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
-      highlights: [
-        "Keynote presentations",
-        "Interactive Q&A sessions",
-        "Prize distribution ceremony",
-        "Networking opportunities",
-      ],
-      date: "March 30, 2025",
-      time: "4 PM – 8 PM",
-      venue: "ALH 002",
-      variant: "green", // Adding variant for PixelCard
-      registrationUrl: "/register/tedtalk", // Keep default URL for this event
-    },
-  ];
+
+    // {
+    //   id: "tedtalk",
+    //   title: "TED Talk + Prizes",
+    //   link: "https://triverse-official.vercel.app/",
+    //   icon: <Speech className="icon" />,
+    //   description:
+    //     "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
+    //   highlights: [
+    //     "Keynote presentations",
+    //     "Interactive Q&A sessions",
+    //     "Prize distribution ceremony",
+    //     "Networking opportunities",
+    //   ],
+    //   date: "March 30, 2025",
+    //   time: "4 PM – 8 PM",
+    //   venue: "ALH 002",
+    //   variant: "green", // Adding variant for PixelCard
+    // },
+  ].map((event) => ({
+    ...event,
+    registrationUrl: event.link // Use each event's link property
+  }));
 
   const timelineEvents = events.sort((a, b) => {
     const dateA = new Date(`${a.date} ${a.time}`);

@@ -172,11 +172,11 @@ const Home: NextPage = () => {
               </div>
               <div className="divider"></div>
               <p className="subtitle">Connect • Create • Transform</p>
-              <Link href="/register">
+              {/* <Link href="/register">
                 <button className="register-button">
                   <span className="register-text">REGISTER</span>
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </section>
