@@ -248,7 +248,7 @@ function App() {
     {
       id: "tedtalk",
       title: "TED Talk + Prizes",
-      link: "https://triverse20.vercel.app/",
+      link: "https://triverse-official.vercel.app/",
       icon: <Speech className="icon" />,
       description:
         "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
@@ -265,7 +265,7 @@ function App() {
     },
   ].map((event) => ({
     ...event,
-    registrationUrl: `/register/${event.id}`, // Add registration URL for each event
+    registrationUrl: event.link // Use each event's link property
   }));
 
   const timelineEvents = events.sort((a, b) => {
