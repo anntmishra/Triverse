@@ -245,24 +245,24 @@ function App() {
       venue: "103 BLA",
       variant: "pink", // Adding variant for PixelCard
     },
-    {
-      id: "tedtalk",
-      title: "TED Talk + Prizes",
-      link: "https://triverse-official.vercel.app/",
-      icon: <Speech className="icon" />,
-      description:
-        "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
-      highlights: [
-        "Keynote presentations",
-        "Interactive Q&A sessions",
-        "Prize distribution ceremony",
-        "Networking opportunities",
-      ],
-      date: "March 30, 2025",
-      time: "4 PM – 8 PM",
-      venue: "ALH 002",
-      variant: "green", // Adding variant for PixelCard
-    },
+    // {
+    //   id: "tedtalk",
+    //   title: "TED Talk + Prizes",
+    //   link: "https://triverse-official.vercel.app/",
+    //   icon: <Speech className="icon" />,
+    //   description:
+    //     "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
+    //   highlights: [
+    //     "Keynote presentations",
+    //     "Interactive Q&A sessions",
+    //     "Prize distribution ceremony",
+    //     "Networking opportunities",
+    //   ],
+    //   date: "March 30, 2025",
+    //   time: "4 PM – 8 PM",
+    //   venue: "ALH 002",
+    //   variant: "green", // Adding variant for PixelCard
+    // },
   ].map((event) => ({
     ...event,
     registrationUrl: event.link // Use each event's link property
