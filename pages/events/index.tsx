@@ -194,6 +194,7 @@ function App() {
     {
       id: "finlit",
       title: "FinLit",
+      link: "https://forms.gle/534XMo5YDYeVfpuC8",
       icon: <BarChart className="icon" />,
       description:
         "A comprehensive financial literacy competition that challenges participants to demonstrate their understanding of financial markets, investment strategies, and economic principles.",
@@ -211,6 +212,7 @@ function App() {
     {
       id: "betfortech",
       title: "Bet for Tech",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSeM3OCOlmS7l8yGrc_LWLDm-AZ6pzvj6ZCIdUycSPzuvm5qzQ/viewform?usp=header",
       icon: <Cpu className="icon" />,
       description:
         "An innovative tech betting platform where participants predict future technology trends and developments. Compete to forecast the next big innovations in the tech industry.",
@@ -228,6 +230,7 @@ function App() {
     {
       id: "code-roast",
       title: "Code Roast",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdXeDcHd0dz6N7vFLfm8ApzIJ3YkGqbzi3yuSRhkedV_WMSkw/viewform?usp=dialog",
       icon: <Code className="icon" />,
       description:
         "A collaborative code review session where experts analyze and critique your code in a constructive environment. Get valuable feedback on your projects and improve your coding skills.",
@@ -245,6 +248,7 @@ function App() {
     {
       id: "tedtalk",
       title: "TED Talk + Prizes",
+      link: "https://triverse20.vercel.app/",
       icon: <Speech className="icon" />,
       description:
         "Inspiring talks from industry leaders, innovators, and thought pioneers sharing their insights on technology, entrepreneurship, and digital transformation.",
