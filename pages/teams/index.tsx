@@ -143,16 +143,12 @@ const Teams: NextPage = () => {
       name: "Office Bearers",
       description: "The leadership team that guides our organization's vision and direction",
       members: [
-        { name: "Team Member 1", role: "Team Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 2", role: "Deputy Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 3", role: "Coordinator", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 4", role: "Coordinator", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 5", role: "Organizer", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 6", role: "Organizer", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 7", role: "Organizer", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 8", role: "Organizer", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 9", role: "Organizer", image: "/assets/member-placeholder.svg" },
-        { name: "Team Member 10", role: "Organizer", image: "/assets/member-placeholder.svg" },
+        { name: "Parth Shukla", role: "Chairperson", image: "/assets/office bearers/Parth.jpg" },
+        { name: "Vrinda Gupta", role: "Vice Chairperson", image: "/assets/office bearers/vrinda_vp.jpg" },
+        { name: "Saumya Singh", role: "Secretary", image: "/assets/office bearers/saumya.jpg" },
+        { name: "Raghav Ratan Agarwal", role: "Treasurer", image: "/assets/office bearers/Raghav_treasurer .jpg" },
+        { name: "Ayushman", role: "Web Master", image: "/assets/office bearers/Ayushman Agrawal Hingorani Webmaster.jpg" },
+        { name: "Riddhi Chaplot", role: "SSR", image: "/assets/office bearers/Riddhi Chaplot_SSR.jpg" },
       ]
     },
     {
@@ -160,16 +156,15 @@ const Teams: NextPage = () => {
       name: "Tech Team",
       description: "Managing all technical aspects and digital infrastructure",
       members: [
-        { name: "Tech Member 1", role: "Tech Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 2", role: "Deputy Tech Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 3", role: "Developer", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 4", role: "Developer", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 5", role: "Designer", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 6", role: "Designer", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 7", role: "System Admin", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 8", role: "System Admin", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 9", role: "QA Engineer", image: "/assets/member-placeholder.svg" },
-        { name: "Tech Member 10", role: "QA Engineer", image: "/assets/member-placeholder.svg" },
+        { name: "Sanya", role: "Technical Head", image: "/assets/technical team/Sanya Wadhawan_Technical Head.png" },
+        { name: "Ayush Katare", role: "Technical Co-Head", image: "/assets/technical team/Ayush_Technical_Co-Head.JPG" },
+        { name: "Rudraksh Jurel", role: "Core Member", image: "/assets/technical team/Rudraksh.jpeg" },
+        { name: "Vidit Khenwar", role: "Core Member", image: "/assets/technical team/Vidit.jpg" },
+        { name: "Devansh Kumar", role: "Core Member", image: "/assets/technical team/Devansh Kumar.jpg" },
+        { name: "Shreya Kaushal", role: "Core Member", image: "/assets/technical team/Shreya Kaushal.jpg" },
+        { name: "Rishabh Verma", role: "Core Member", image: "/assets/technical team/Rishabh Verma.png" },
+        { name: "Riya Katiyar", role: "Core Member", image: "/assets/technical team/riya_katiyar.jpeg" },
+        { name: "Riya Tyagi", role: "Core Member", image: "/assets/technical team/riya tyagi.jpeg" },
       ]
     },
     {
@@ -177,16 +172,15 @@ const Teams: NextPage = () => {
       name: "Design Team",
       description: "Handling design, branding, and creative aspects",
       members: [
-        { name: "Creative Member 1", role: "Creative Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 2", role: "Deputy Creative Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 3", role: "Graphic Designer", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 4", role: "Graphic Designer", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 5", role: "Content Creator", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 6", role: "Content Creator", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 7", role: "Video Editor", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 8", role: "Video Editor", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 9", role: "Animator", image: "/assets/member-placeholder.svg" },
-        { name: "Creative Member 10", role: "Animator", image: "/assets/member-placeholder.svg" },
+        { name: "Anant", role: "Design Head", image: "/assets/design team/Anant.JPG" },
+        { name: "Satvik", role: "Design Co-Head", image: "/assets/design team/satvik.jpg" },
+        { name: "Pihu", role: "Design Co-Head", image: "/assets/design team/Pihu.jpeg" },
+        { name: "Dhruv Mehta", role: "Core Member", image: "/assets/design team/Dhruv Mehta.jpg" },
+        { name: "Aman Bhandari", role: "Core Member", image: "/assets/design team/Aman Bhandari .png" },
+        { name: "Kunal", role: "Core Member", image: "/assets/design team/Kunal hooda.jpg" },
+        { name: "Aditi Gupta", role: "Core Member", image: "/assets/design team/ADITI GUPTA.png" },
+        { name: "Vedant Singh", role: "Core Member", image: "/assets/design team/Vedant_Singh_Design_Team.jpg" },
+        { name: "Amogh Sharma", role: "Core Member", image: "/assets/design team/Amogh sharma.jpeg" },
       ]
     },
     {
@@ -194,86 +188,78 @@ const Teams: NextPage = () => {
       name: "Management",
       description: "Overseeing organization, planning, and operational details",
       members: [
-        { name: "Management Member 1", role: "Management Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 2", role: "Deputy Management Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 3", role: "Project Manager", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 4", role: "Project Manager", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 5", role: "Coordinator", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 6", role: "Coordinator", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 7", role: "Operations", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 8", role: "Operations", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 9", role: "Logistics", image: "/assets/member-placeholder.svg" },
-        { name: "Management Member 10", role: "Logistics", image: "/assets/member-placeholder.svg" },
+        { name: "Piyush Jain", role: "Management Head", image: "/assets/management team/Piyush.jpeg" },
+        { name: "Tanishka Jain", role: "Management Co-Head", image: "/assets/management team/Tanishka Jain.jpg" },
+        { name: "Prapti Joshi", role: "Core Member", image: "/assets/management team/Prapti joshi.jpeg" },
+        { name: "Aman Singh", role: "Core Member", image: "/assets/management team/aman.jpg" },
+        { name: "Ojas Vats", role: "Core Member", image: "/assets/management team/Ojas vats_.jpg" },
+        { name: "Surya Kumar Raj", role: "Core Member", image: "/assets/management team/Surya Pratap.jpg" },
+        { name: "Parth Vij", role: "Core Member", image: "/assets/management team/parth vij.jpg" },
+        { name: "Ayush Anand", role: "Core Member", image: "/assets/management team/Ayush Anand [Management Team].jpg" },
       ]
     },
     {
       id: 5,
-      name: "Multimedia",
-      description: "Creating and managing photos, videos, and visual content",
+      name: "PR Team",
+      description: "Managing public relations and external communications",
       members: [
-        { name: "Multimedia Member 1", role: "Multimedia Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 2", role: "Deputy Multimedia Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 3", role: "Videographer", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 4", role: "Videographer", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 5", role: "Photographer", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 6", role: "Photographer", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 7", role: "Editor", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 8", role: "Editor", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 9", role: "Sound Engineer", image: "/assets/member-placeholder.svg" },
-        { name: "Multimedia Member 10", role: "Sound Engineer", image: "/assets/member-placeholder.svg" },
+        { name: "Gurjot", role: "PR Head", image: "/assets/pr and outreach team/gurjot_ pr head.jpg" },
+        { name: "Disha", role: "PR Co-Head", image: "/assets/pr and outreach team/disha.jpg" },
+        { name: "Ayush Singh", role: "Core Member", image: "/assets/pr and outreach team/Ayush singh pr and outreach_.jpg" },
+        { name: "Hiren Jain", role: "Core Member", image: "/assets/member-placeholder.svg" },
+        { name: "Vartika Manish", role: "Core Member", image: "/assets/pr and outreach team/Vartika_Manish_PR_and_outreach.jpg" },
+        { name: "Krishna Vijay", role: "Core Member", image: "/assets/pr and outreach team/Krishna_Pr and Outreach.jpg" },
+        { name: "Riddhima Srivastava", role: "Core Member", image: "/assets/pr and outreach team/Riddhima_PR and Outreach.jpg" },
+        { name: "Shubhi Singhal", role: "Core Member", image: "/assets/pr and outreach team/Shubhi_PR and outreach.jpg" },
+        { name: "Vasu Aggarwal", role: "Core Member", image: "/assets/pr and outreach team/vasuaggarwal.jgg.jpg" },
       ]
     },
     {
       id: 6,
-      name: "Content",
-      description: "Creating engaging content for all platforms and communications",
+      name: "Social Media Team",
+      description: "Managing our presence across social media platforms",
       members: [
-        { name: "Content Member 1", role: "Content Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 2", role: "Deputy Content Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 3", role: "Writer", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 4", role: "Writer", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 5", role: "Editor", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 6", role: "Editor", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 7", role: "Copywriter", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 8", role: "Copywriter", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 9", role: "Content Strategist", image: "/assets/member-placeholder.svg" },
-        { name: "Content Member 10", role: "Content Strategist", image: "/assets/member-placeholder.svg" },
+        { name: "Shubham", role: "Social Media Head", image: "/assets/social media team/Shubham.jpeg" },
+        { name: "Ashneet", role: "Social Media Co-Head", image: "/assets/social media team/ashneet.jpg" },
+        { name: "Gaurika Kaushik", role: "Core Member", image: "/assets/social media team/gaurika.jpeg" },
+        { name: "Lavanya Narang", role: "Core Member", image: "/assets/social media team/Lavanya.jpg" },
+        { name: "Mansimer Singh", role: "Core Member", image: "/assets/social media team/Mansimer.jpeg.jpg" },
+        { name: "Daksh Bhatnagar", role: "Core Member", image: "/assets/social media team/daksh_bhatnagar.jpeg" },
+        { name: "Vansh Mittal", role: "Core Member", image: "/assets/social media team/vansh.jpeg" },
+        { name: "Aviral Gupta", role: "Core Member", image: "/assets/social media team/Aviral Gupta.jpg" },
       ]
     },
     {
       id: 7,
-      name: "Social Media",
-      description: "Managing our presence across various social platforms",
+      name: "Multimedia Team",
+      description: "Creating and managing visual and audio content",
       members: [
-        { name: "Social Member 1", role: "Social Media Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 2", role: "Deputy Social Media Lead", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 3", role: "Community Manager", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 4", role: "Community Manager", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 5", role: "Content Creator", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 6", role: "Content Creator", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 7", role: "Analytics", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 8", role: "Analytics", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 9", role: "Platform Specialist", image: "/assets/member-placeholder.svg" },
-        { name: "Social Member 10", role: "Platform Specialist", image: "/assets/member-placeholder.svg" },
+        { name: "Akshat", role: "Multimedia Head", image: "/assets/multimedia team/Akshat_Kulshrestha_MultimediaHead.JPG" },
+        { name: "Pranav", role: "Multimedia Co-Head", image: "/assets/multimedia team/Pranav Gupta_Co-Head.jpg" },
+        { name: "Saumya", role: "Multimedia Co-Head", image: "/assets/multimedia team/SaumyaKumari_multimedia_cohead.jpg" },
+        { name: "Manya Chaubey", role: "Core Member", image: "/assets/multimedia team/ManyaChaubey.jpeg" },
+        { name: "Atharva Joshi", role: "Core Member", image: "/assets/multimedia team/Atharva Joshi multimedia.jpg" },
+        { name: "Vansh Singhal", role: "Core Member", image: "/assets/multimedia team/Vansh singhal_Multimedia.JPG" },
+        { name: "Sanskriti Chaudhary", role: "Core Member", image: "/assets/multimedia team/Sanskriti.jpeg" },
+        { name: "Sanyam", role: "Core Member", image: "/assets/multimedia team/Sanyam Girdhar_Multimedia.JPG" },
       ]
     },
     {
       id: 8,
-      name: "PR Outreach",
-      description: "Building relationships and managing external communications",
+      name: "Content Team",
+      description: "Creating engaging written content for various platforms",
       members: [
-        { name: "PR Member 1", role: "PR Lead", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 2", role: "Deputy PR Lead", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 3", role: "Media Relations", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 4", role: "Media Relations", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 5", role: "Communications", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 6", role: "Communications", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 7", role: "Outreach Coordinator", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 8", role: "Outreach Coordinator", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 9", role: "Partnerships", image: "/assets/member-placeholder.svg" },
-        { name: "PR Member 10", role: "Partnerships", image: "/assets/member-placeholder.svg" },
+        { name: "Aditya", role: "Content Head", image: "/assets/content team/Aditya_contenthead.png" },
+        { name: "Twinkle", role: "Content Co-Head", image: "/assets/content team/Twinklecontent.jpg" },
+        { name: "Satvik Kshatriya", role: "Core Member", image: "/assets/content team/Satvik Kshatriya.jpg" },
+        { name: "Mannat Gera", role: "Core Member", image: "/assets/content team/Mannat Gera.jpg" },
+        { name: "Muskan Singh", role: "Core Member", image: "/assets/content team/Muskan Singh-.jpg" },
+        { name: "Daksh Nagarkoti", role: "Core Member", image: "/assets/content team/Daksh Nagarkoti.jpg" },
+        { name: "Mrinal Gupta", role: "Core Member", image: "/assets/content team/MrinalGupta.jpeg" },
+        { name: "Shruti Pandey", role: "Core Member", image: "/assets/content team/Shruti Pandey- Content Team.jpg" },
+        { name: "Akshat Ojha", role: "Core Member", image: "/assets/content team/Akshat Ojha.jpeg" },
       ]
-    }
+    },
   ];
 
   const scrollToTeam = (index: number) => {
@@ -352,25 +338,25 @@ const Teams: NextPage = () => {
               className={`team-nav-btn ${activeTeam === 4 ? 'active' : ''}`}
               onClick={() => scrollToTeam(4)}
             >
-              Multimedia
+              PR Team
             </button>
             <button
               className={`team-nav-btn ${activeTeam === 5 ? 'active' : ''}`}
               onClick={() => scrollToTeam(5)}
             >
-              Content
+              Social Media Team
             </button>
             <button
               className={`team-nav-btn ${activeTeam === 6 ? 'active' : ''}`}
               onClick={() => scrollToTeam(6)}
             >
-              Social Media
+              Multimedia Team
             </button>
             <button
               className={`team-nav-btn ${activeTeam === 7 ? 'active' : ''}`}
               onClick={() => scrollToTeam(7)}
             >
-              PR Outreach
+              Content Team
             </button>
           </div>
         </section>
@@ -579,7 +565,7 @@ const Teams: NextPage = () => {
           width: 100%;
           background: rgba(40, 15, 60, 0.75);
           backdrop-filter: blur(10px);
-          padding: 0.8rem 0;
+          padding: 1rem 0;
           z-index: 10;
           margin-top: 1.5rem;
           margin-bottom: 2rem;
@@ -590,13 +576,14 @@ const Teams: NextPage = () => {
 
         .nav-container {
           display: flex;
-          flex-wrap: nowrap;
-          overflow-x: auto;
+          flex-wrap: wrap;
           padding: 0.5rem 1rem;
           gap: 1rem;
           scrollbar-width: thin;
           scrollbar-color: #ea8eea rgba(60, 20, 80, 0.5);
           justify-content: center;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         .nav-container::-webkit-scrollbar {
@@ -624,17 +611,21 @@ const Teams: NextPage = () => {
           cursor: pointer;
           transition: all 0.3s ease;
           white-space: nowrap;
+          font-size: 1rem;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .team-nav-btn:hover {
           background: rgba(234, 142, 234, 0.3);
           transform: translateY(-2px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .team-nav-btn.active {
           background: rgba(234, 142, 234, 0.4);
           border-color: rgba(234, 142, 234, 0.6);
           box-shadow: 0 0 15px rgba(234, 142, 234, 0.3);
+          font-weight: 600;
         }
 
         .teams-showcase {
@@ -851,6 +842,14 @@ const Teams: NextPage = () => {
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
           transform: translateZ(10px);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          position: relative;
+        }
+
+        .member-photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
         }
 
         .member-card:hover .member-photo {
@@ -1011,7 +1010,13 @@ const Teams: NextPage = () => {
           }
           
           .nav-container {
-            justify-content: flex-start; /* On mobile, align to start for better scrolling */
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          
+          .team-nav-btn {
+            margin-bottom: 0.5rem;
+            flex: 0 1 auto;
           }
         }
 

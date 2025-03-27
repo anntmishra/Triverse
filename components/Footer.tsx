@@ -42,24 +42,6 @@ const Footer = () => {
           </p>
           <div className="social-icons">
             <a
-              href="https://twitter.com/Triverse"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-              </svg>
-            </a>
-            <a
               href="https://instagram.com/Triverse"
               target="_blank"
               rel="noopener noreferrer"
@@ -99,149 +81,33 @@ const Footer = () => {
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a
-              href="https://github.com/Triverse"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-            </a>
           </div>
           
-          <div className="creator-credits">
-            <h3 className="creator-title">
-              Made with <span className="heart">❤</span> by:
-            </h3>
-            <div className="team-grid">
+          <div className="team-section">
+            <h4>CREATORS</h4>
+            <div className="team-members">
               <div className="team-member">
-                <a href="https://linkedin.com/in/ayush-katare" target="_blank" rel="noopener noreferrer">
-                  <div className="team-card">
-                    <div className="team-card-inner">
-                      <div className="team-card-front">
-                        <div className="team-photo">
-                          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces" alt="Ayush Katare" />
-                        </div>
-                        <span className="team-name">Ayush Katare</span>
-                      </div>
-                      <div className="team-card-back">
-                        <div className="team-socials">
-                          <a href="https://github.com/ayushkatare" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                          </a>
-                          <a href="https://linkedin.com/in/ayush-katare" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                              <rect x="2" y="9" width="4" height="12"></rect>
-                              <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <a href="https://mytago.tech/katareayush" target="_blank" rel="noopener noreferrer">
+                  <img src="/assets/technical team/Ayush_Technical_Co-Head.JPG" alt="Ayush Katare" className="member-image" />
+                  <span className="member-name">Ayush</span>
                 </a>
               </div>
               <div className="team-member">
-                <a href="https://linkedin.com/in/rudraksh-jurel" target="_blank" rel="noopener noreferrer">
-                  <div className="team-card">
-                    <div className="team-card-inner">
-                      <div className="team-card-front">
-                        <div className="team-photo">
-                          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=faces" alt="Rudraksh Jurel" />
-                        </div>
-                        <span className="team-name">Rudraksh Jurel</span>
-                      </div>
-                      <div className="team-card-back">
-                        <div className="team-socials">
-                          <a href="https://github.com/rudraksh-jurel" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                          </a>
-                          <a href="https://linkedin.com/in/rudraksh-jurel" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                              <rect x="2" y="9" width="4" height="12"></rect>
-                              <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <a href="https://anantmishra-zeta.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <img src="/assets/design team/Anant.JPG" alt="Anant Mishra" className="member-image" />
+                  <span className="member-name">Anant</span>
                 </a>
               </div>
               <div className="team-member">
-                <a href="https://linkedin.com/in/vidit-khenwar" target="_blank" rel="noopener noreferrer">
-                  <div className="team-card">
-                    <div className="team-card-inner">
-                      <div className="team-card-front">
-                        <div className="team-photo">
-                          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=faces" alt="Vidit Khenwar" />
-                        </div>
-                        <span className="team-name">Vidit Khenwar</span>
-                      </div>
-                      <div className="team-card-back">
-                        <div className="team-socials">
-                          <a href="https://github.com/viditkhenwar" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                          </a>
-                          <a href="https://linkedin.com/in/vidit-khenwar" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                              <rect x="2" y="9" width="4" height="12"></rect>
-                              <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <a href="https://www.mytago.tech/rudraksh" target="_blank" rel="noopener noreferrer">
+                  <img src="/assets/technical team/Rudraksh.jpeg" alt="Rudraksh" className="member-image" />
+                  <span className="member-name">Rudraksh</span>
                 </a>
               </div>
               <div className="team-member">
-                <a href="https://linkedin.com/in/anant-mishra" target="_blank" rel="noopener noreferrer">
-                  <div className="team-card">
-                    <div className="team-card-inner">
-                      <div className="team-card-front">
-                        <div className="team-photo">
-                          <img src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?w=150&h=150&fit=crop&crop=faces" alt="Anant Mishra" />
-                        </div>
-                        <span className="team-name">Anant Mishra</span>
-                      </div>
-                      <div className="team-card-back">
-                        <div className="team-socials">
-                          <a href="https://github.com/anantmishra1" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                          </a>
-                          <a href="https://linkedin.com/in/anant-mishra" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                              <rect x="2" y="9" width="4" height="12"></rect>
-                              <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <a href="https://www.mytago.tech/viditkhenwar" target="_blank" rel="noopener noreferrer">
+                  <img src="/assets/technical team/Vidit.jpg" alt="Vidit" className="member-image" />
+                  <span className="member-name">Vidit</span>
                 </a>
               </div>
             </div>
@@ -253,34 +119,16 @@ const Footer = () => {
             <h3>Links</h3>
             <ul>
               <li>
-                <Link href="/about">About</Link>
+                <Link href="#about">About</Link>
               </li>
               <li>
                 <Link href="/events">Events</Link>
               </li>
               <li>
-                <Link href="/schedule">Schedule</Link>
+                <Link href="/timeline">Schedule</Link>
               </li>
               <li>
                 <Link href="/sponsors">Sponsors</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h3>Resources</h3>
-            <ul>
-              <li>
-                <Link href="/faqs">FAQs</Link>
-              </li>
-              <li>
-                <Link href="/gallery">Gallery</Link>
-              </li>
-              <li>
-                <Link href="/register">Register</Link>
-              </li>
-              <li>
-                <Link href="/code-of-conduct">Code of Conduct</Link>
               </li>
             </ul>
           </div>
@@ -392,12 +240,11 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <div className="footer-copyright">
-            <p>
-              &copy; {new Date().getFullYear()} Triverse | Bennett University. All
-              rights reserved.
-            </p>
-          </div>
+          <p>
+            &copy; {new Date().getFullYear()} Triverse | Bennett University. All
+            rights reserved.
+          </p>
+         
         </div>
       </div>
 
@@ -426,7 +273,7 @@ const Footer = () => {
         .footer-content {
           max-width: 1200px;
           margin: 0 auto;
-          padding: 0 2rem 3rem;
+          padding: 0 2rem 2rem;
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           gap: 3rem;
@@ -439,7 +286,7 @@ const Footer = () => {
         .footer-links-section {
           grid-column: span 5;
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
         }
 
@@ -510,9 +357,8 @@ const Footer = () => {
 
         .contact-list li {
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           gap: 0.8rem;
-          margin-bottom: 1rem;
         }
 
         .contact-list svg {
@@ -520,7 +366,6 @@ const Footer = () => {
           height: 18px;
           flex-shrink: 0;
           color: #ea8eea;
-          margin-top: 3px;
         }
 
         .contact-list a,
@@ -529,7 +374,6 @@ const Footer = () => {
           text-decoration: none;
           transition: all 0.3s ease;
           font-size: 0.9rem;
-          line-height: 1.5;
         }
 
         .contact-list a:hover {
@@ -540,7 +384,6 @@ const Footer = () => {
           display: flex;
           gap: 1rem;
           margin-top: 1.5rem;
-          margin-bottom: 2.5rem;
         }
 
         .social-icons a {
@@ -565,6 +408,62 @@ const Footer = () => {
         .social-icons svg {
           width: 18px;
           height: 18px;
+        }
+
+        .team-section {
+          margin-top: 1.5rem;
+        }
+        
+        .team-section h4 {
+          color: #ea8eea;
+          font-size: 1rem;
+          margin-bottom: 0.8rem;
+        }
+        
+        .team-members {
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .team-member a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-decoration: none;
+          color: inherit;
+          width: 100%;
+        }
+        
+        .team-member {
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+          transform: translateY(-3px);
+        }
+        
+        .member-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-bottom: 0.3rem;
+          border: 1px solid rgba(234, 142, 234, 0.3);
+          transition: all 0.3s ease;
+          object-fit: cover;
+        }
+        
+        .member-name {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.8rem;
+          transition: all 0.3s ease;
+          text-align: center;
+        }
+        
+        .team-member:hover .member-name {
+          color: #ea8eea;
         }
 
         .footer-newsletter h3 {
@@ -669,33 +568,23 @@ const Footer = () => {
         }
 
         .footer-bottom {
-          position: relative;
-          padding: 2rem 0 1.5rem;
-        }
-
-        .footer-bottom::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 10%;
-          right: 10%;
-          height: 1px;
-          background: linear-gradient(
-            90deg,
-            rgba(146, 93, 161, 0),
-            rgba(146, 93, 161, 0.4),
-            rgba(146, 93, 161, 0)
-          );
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 1.5rem 0;
+          text-align: center;
         }
 
         .footer-bottom-content {
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 2rem;
-          text-align: left;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
         }
-        
-        .footer-copyright p {
+
+        .footer-bottom p {
           color: rgba(255, 255, 255, 0.6);
           font-size: 0.9rem;
           margin: 0;
@@ -705,181 +594,6 @@ const Footer = () => {
           color: #ea8eea;
           display: inline-block;
           animation: heartbeat 1.5s ease infinite;
-        }
-
-        .creator-credits {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-bottom: 2.5rem;
-          width: 100%;
-          background: rgba(15, 15, 30, 0.4);
-          border-radius: 15px;
-          padding: 2rem 1rem;
-          border: 1px solid rgba(146, 93, 161, 0.2);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .creator-title {
-          color: #ea8eea;
-          font-size: 1.2rem;
-          font-weight: 600;
-          margin: 0 0 1.8rem 0;
-          text-align: center;
-          position: relative;
-          padding-bottom: 0.5rem;
-        }
-        
-        .creator-title::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 50px;
-          height: 2px;
-          background: linear-gradient(90deg, #d4c499, #925da1);
-          border-radius: 1px;
-        }
-        
-        .team-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          justify-content: center;
-          width: 100%;
-          max-width: 700px;
-        }
-        
-        .team-member {
-          display: flex;
-          justify-content: center;
-          perspective: 1000px;
-        }
-        
-        .team-member a {
-          text-decoration: none;
-          display: block;
-          width: 100%;
-        }
-        
-        .team-card {
-          width: 100%;
-          height: 140px;
-          position: relative;
-        }
-        
-        .team-card-inner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transform-style: preserve-3d;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-        
-        .team-member:hover .team-card-inner {
-          transform: rotateY(180deg);
-        }
-        
-        .team-card-front, .team-card-back {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          border-radius: 12px;
-          background: rgba(25, 25, 45, 0.4);
-          border: 1px solid rgba(146, 93, 161, 0.3);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          padding: 1rem;
-          overflow: hidden;
-        }
-        
-        .team-card-front::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(45deg, rgba(146, 93, 161, 0.1), rgba(30, 30, 60, 0.1));
-          z-index: -1;
-        }
-        
-        .team-card-back {
-          transform: rotateY(180deg);
-          background: rgba(35, 35, 70, 0.7);
-        }
-        
-        .team-photo {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          background: rgba(146, 93, 161, 0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 2px solid rgba(234, 142, 234, 0.5);
-          overflow: hidden;
-          transition: all 0.3s ease;
-          margin-bottom: 0.9rem;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .team-photo img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
-        }
-        
-        .team-member:hover .team-photo img {
-          transform: scale(1.1);
-        }
-        
-        .team-name {
-          color: #ffffff;
-          font-size: 0.95rem;
-          font-weight: 500;
-          text-align: center;
-          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-          letter-spacing: 0.02em;
-        }
-        
-        .team-socials {
-          display: flex;
-          justify-content: center;
-          gap: 1.2rem;
-          width: 100%;
-        }
-        
-        .team-socials a {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: rgba(146, 93, 161, 0.3);
-          transition: all 0.3s ease;
-        }
-        
-        .team-socials a:hover {
-          background: rgba(234, 142, 234, 0.5);
-          transform: translateY(-5px);
-          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .team-socials svg {
-          width: 22px;
-          height: 22px;
-          color: rgba(255, 255, 255, 0.95);
         }
 
         @keyframes heartbeat {
@@ -909,32 +623,12 @@ const Footer = () => {
             grid-column: span 2;
             margin-top: 2rem;
           }
-          
-          .team-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            max-width: 600px;
-          }
-          
-          .team-card {
-            height: 130px;
-          }
-          
-          .team-photo {
-            width: 70px;
-            height: 70px;
-          }
-          
-          .creator-credits {
-            padding: 1.5rem 1rem;
-          }
         }
 
         @media (max-width: 768px) {
           .footer-content {
             grid-template-columns: 1fr;
             gap: 2rem;
-            padding-bottom: 2rem;
           }
 
           .footer-logo-section,
@@ -947,30 +641,10 @@ const Footer = () => {
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
           }
-          
-          .creator-credits {
-            margin-top: 1.5rem;
-            margin-bottom: 2.5rem;
-            padding: 1.5rem 0.8rem;
-          }
 
-          .team-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 450px;
-          }
-          
-          .team-card {
-            height: 140px;
-          }
-          
-          .team-photo {
-            width: 75px;
-            height: 75px;
-          }
-          
-          .team-name {
-            font-size: 0.9rem;
+          .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
           }
         }
 
@@ -985,44 +659,6 @@ const Footer = () => {
 
           .form-group {
             flex-direction: column;
-          }
-          
-          .footer-bottom {
-            padding: 1.5rem 0 1rem;
-          }
-          
-          .team-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            max-width: 320px;
-          }
-          
-          .team-card {
-            height: 125px;
-          }
-          
-          .team-photo {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 0.6rem;
-          }
-          
-          .team-name {
-            font-size: 0.85rem;
-          }
-          
-          .team-socials a {
-            width: 42px;
-            height: 42px;
-          }
-          
-          .team-socials svg {
-            width: 20px;
-            height: 20px;
-          }
-          
-          .creator-credits {
-            padding: 1.2rem 0.5rem;
           }
         }
       `}</style>

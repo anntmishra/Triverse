@@ -41,13 +41,6 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
 
   return (
     <>
-      {/* Date display - visible when logo is hovered */}
-      <div className={`date-container ${isLogoHovered ? "visible" : "hidden"}`}>
-        <div className="date-display">
-          <span className="date-text"> Mark Your Calendar: March 27-30! </span>
-        </div>
-      </div>
-
       {/* Regular dock - only rendered when logo is not hovered AND dock should be visible */}
       {!isLogoHovered && isDockVisible && (
         <div className="dock-container">
@@ -329,64 +322,6 @@ const Navbar: React.FC<NavbarProps> = ({ isLogoHovered = false }) => {
 
         @media (max-width: 480px) {
           /* Mobile styles preserved */
-        }
-
-        .date-container {
-          position: fixed;
-          bottom: 20px;
-          left: 0;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-          opacity: 0;
-          transform: translateY(80px);
-          transition: opacity 0.4s ease, transform 0.4s ease;
-          pointer-events: none;
-        }
-
-        .date-container.visible {
-          opacity: 1;
-          transform: translateY(0);
-          pointer-events: auto;
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .date-container.hidden {
-          opacity: 0;
-          transform: translateY(80px);
-          pointer-events: none;
-        }
-
-        .date-display {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: rgba(20, 20, 20, 0.8);
-          border-radius: 18px;
-          padding: 10px 20px;
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-          height: 70px;
-          transition: all 0.3s ease;
-          min-width: 200px; /* Ensure minimum width for the date */
-        }
-
-        .date-text {
-          color: #ea8eea;
-          font-size: 20px;
-          font-weight: bold;
-          letter-spacing: 1px;
-          font-family: "Roboto", sans-serif;
-        }
-
-        @media (max-width: 768px) {
-          .date-display {
-            width: 90%;
-            padding: 10px;
-          }
         }
       `}</style>
     </>

@@ -184,6 +184,10 @@ const Home: NextPage = () => {
               </div>
               <div className="divider"></div>
               <p className="subtitle">Connect • Create • Transform</p>
+              <div className="event-date-container">
+                <p className="event-date">March 27-30, 2024</p>
+                <div className="smoke-effect"></div>
+              </div>
               {/* <Link href="/register">
                 <button className="register-button">
                   <span className="register-text">REGISTER</span>
@@ -2685,6 +2689,73 @@ const Home: NextPage = () => {
           max-width: 200px;
           margin: 0 0 0.5rem;
           line-height: 1.5;
+        }
+
+        .event-date {
+          margin-top: 0.5rem;
+          font-size: 1.3rem;
+          color: #ea8eea;
+          font-weight: 600;
+          text-align: center;
+          letter-spacing: 1px;
+          opacity: 0;
+          animation: fadeIn 0.8s 1.5s forwards;
+          font-family: "Playfair Display", serif;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .event-date-container {
+          position: relative;
+          display: inline-block;
+          margin-top: 0.5rem;
+          overflow: hidden;
+        }
+        
+        .smoke-effect {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, 
+            rgba(146, 93, 161, 0) 0%, 
+            rgba(234, 142, 234, 0.3) 50%,
+            rgba(146, 93, 161, 0) 100%
+          );
+          filter: blur(8px);
+          z-index: 1;
+          opacity: 0;
+          transform: translateX(100%);
+          animation: smokeAnimation 4s 2s forwards;
+        }
+        
+        @keyframes smokeAnimation {
+          0% {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+          10% {
+            opacity: 0.7;
+          }
+          80% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(-100%);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>
