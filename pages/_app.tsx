@@ -1,7 +1,7 @@
-import type { AppProps } from "next/app";
-import { ThemeProvider } from "../context/ThemeContext";
-import { useState, useEffect, useRef } from "react";
-import "../styles/globals.css";
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { useState, useEffect, useRef } from 'react';
+import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 
@@ -38,7 +38,40 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
 
-    // Simulate loading time and then hide splash screen
+    // Preload important images for faster loading
+    const imagesToPreload = [
+      '/assets/logonobg (1).png', 
+      '/assets/website.png',
+      '/assets/triangle-logo.svg',
+      '/assets/bennettlogo.png',
+      '/assets/ieeelogo.png',
+      '/assets/team-avatar.png'
+    ];
+
+    const preloadImages = () => {
+      let loadedCount = 0;
+      const totalImages = imagesToPreload.length;
+      
+      imagesToPreload.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = img.onerror = () => {
+          loadedCount++;
+          
+          // When all images are loaded, show the site
+          if (loadedCount === totalImages) {
+            setTimeout(() => {
+              setLoading(false);
+            }, 500);
+          }
+        };
+      });
+    };
+
+    // Start preloading images
+    preloadImages();
+    
+    // Fallback timer - if images take too long, show site anyway
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2500);
@@ -50,6 +83,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider>
       <Head>
         <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta
           name="theme-color"
           content={theme === "dark" ? "transparent" : "transparent"}
         />
@@ -59,12 +96,15 @@ function MyApp({ Component, pageProps }: AppProps) {
             color: ${theme === "dark" ? "#ffffff" : "#333333"} !important;
           }
           
-          /* Critical styles to prevent white flash */
-          * {
-            box-sizing: border-box;
+          body::-webkit-scrollbar, #__next::-webkit-scrollbar {
+            display: none !important;
           }
           
-          /* Force theme for all browsers */
+          body, #__next {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+          }
+          
           @media (prefers-color-scheme: light) {
             html {
               color-scheme: ${theme === "dark" ? "dark" : "light"} !important;
@@ -135,7 +175,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 font-family: "Playfair Display", serif;
                 letter-spacing: 2px;
               }
-
+              
               @keyframes fadeIn {
                 from {
                   opacity: 0;
@@ -172,6 +212,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             `}</style>
           </div>
         ) : null}
+        
         <Navbar />
         <Component {...pageProps} />
       </div>

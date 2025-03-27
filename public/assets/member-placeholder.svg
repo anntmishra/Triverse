@@ -1,0 +1,32 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#3c1450" />
+  <circle cx="100" cy="70" r="40" fill="#925da1" />
+  <rect x="60" y="120" width="80" height="60" rx="10" fill="#925da1" />
+  <circle cx="100" cy="70" r="35" fill="#5a2d73" />
+  <rect x="65" y="120" width="70" height="55" rx="8" fill="#5a2d73" />
+  
+  <!-- Subtle Gradient Overlay -->
+  <rect width="200" height="200" fill="url(#gradient)" opacity="0.5" />
+  
+  <!-- Sparkle Effects -->
+  <circle cx="140" cy="40" r="3" fill="white" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="160" cy="70" r="2" fill="white" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="50" cy="60" r="2.5" fill="white" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Decorative Line -->
+  <path d="M50,170 C80,160 120,180 150,165" stroke="#ea8eea" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7" />
+  
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea8eea" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#3c1450" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+</svg> 

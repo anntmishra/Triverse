@@ -19,6 +19,7 @@ const Home: NextPage = () => {
   const { theme: _ } = useTheme();
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
   // Throttle scroll event for better performance
   useEffect(() => {
@@ -48,6 +49,11 @@ const Home: NextPage = () => {
       }
     };
 
+    // Setup carousel rotation
+    const carouselInterval = setInterval(() => {
+      setCarouselIndex(prevIndex => (prevIndex + 1) % 4);
+    }, 4000);
+
     // Basic document setup
     document.body.style.margin = "0";
     document.body.style.padding = "0";
@@ -59,6 +65,7 @@ const Home: NextPage = () => {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      clearInterval(carouselInterval);
     };
   }, []);
 
@@ -70,6 +77,11 @@ const Home: NextPage = () => {
   const handleLogoLeave = useCallback(() => {
     setIsLogoHovered(false);
   }, []);
+
+  // Create a function to handle manual indicator clicks
+  const handleIndicatorClick = (index: number) => {
+    setCarouselIndex(index);
+  };
 
   return (
     <div
@@ -172,6 +184,10 @@ const Home: NextPage = () => {
               </div>
               <div className="divider"></div>
               <p className="subtitle">Connect • Create • Transform</p>
+              <div className="event-date-container">
+                <p className="event-date">March 27-30, 2024</p>
+                <div className="smoke-effect"></div>
+              </div>
               {/* <Link href="/register">
                 <button className="register-button">
                   <span className="register-text">REGISTER</span>
@@ -221,26 +237,61 @@ const Home: NextPage = () => {
 
                     <div className="stats-container">
                       <div className="stat-item">
-                        <div className="stat-number">2500+</div>
+                        <div className="stat-number">2000+</div>
                         <div className="stat-label">Participants</div>
                       </div>
                       <div className="stat-item">
-                        <div className="stat-number">30+</div>
+                        <div className="stat-number">10+</div>
                         <div className="stat-label">Events</div>
                       </div>
                       <div className="stat-item">
-                        <div className="stat-number">15+</div>
+                        <div className="stat-number">7+</div>
                         <div className="stat-label">Sponsors</div>
                       </div>
                     </div>
                   </div>
                   <div className="about-visual">
-                    <div className="image-container">
-                      <img
-                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                        alt="Tech Event Crowd"
-                        className="about-image"
-                      />
+                    <div className="image-carousel">
+                      <div className="carousel-images">
+                        <img 
+                          src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.28 (3).jpeg" 
+                          alt="Triverse Past Event" 
+                          className={`carousel-image ${carouselIndex === 0 ? "active" : ""}`}
+                        />
+                        <img 
+                          src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.26.jpeg" 
+                          alt="Triverse Past Event" 
+                          className={`carousel-image ${carouselIndex === 1 ? "active" : ""}`}
+                        />
+                        <img 
+                          src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.25.jpeg" 
+                          alt="Triverse Past Event" 
+                          className={`carousel-image ${carouselIndex === 2 ? "active" : ""}`}
+                        />
+                        <img 
+                          src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.24.jpeg" 
+                          alt="Triverse Past Event" 
+                          className={`carousel-image ${carouselIndex === 3 ? "active" : ""}`}
+                        />
+                      </div>
+                      <div className="carousel-indicators">
+                        <span 
+                          className={`indicator ${carouselIndex === 0 ? "active" : ""}`} 
+                          onClick={() => handleIndicatorClick(0)}
+                        ></span>
+                        <span 
+                          className={`indicator ${carouselIndex === 1 ? "active" : ""}`} 
+                          onClick={() => handleIndicatorClick(1)}
+                        ></span>
+                        <span 
+                          className={`indicator ${carouselIndex === 2 ? "active" : ""}`} 
+                          onClick={() => handleIndicatorClick(2)}
+                        ></span>
+                        <span 
+                          className={`indicator ${carouselIndex === 3 ? "active" : ""}`} 
+                          onClick={() => handleIndicatorClick(3)}
+                        ></span>
+                      </div>
                       <div className="image-overlay"></div>
                     </div>
                     <div className="visual-quote">
@@ -273,6 +324,9 @@ const Home: NextPage = () => {
                       <p className="icon-description">
                         Fostering new ideas and solutions
                       </p>
+                      <div className="icon-image-container">
+                        <img src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.27.jpeg" alt="Innovation at Triverse" />
+                      </div>
                     </div>
                     <div className="icon-item">
                       <div className="icon-circle">
@@ -295,6 +349,9 @@ const Home: NextPage = () => {
                       <p className="icon-description">
                         Building connections that last
                       </p>
+                      <div className="icon-image-container">
+                        <img src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.25 (1).jpeg" alt="Community at Triverse" />
+                      </div>
                     </div>
                     <div className="icon-item">
                       <div className="icon-circle">
@@ -314,6 +371,9 @@ const Home: NextPage = () => {
                       <p className="icon-description">
                         Exploring cutting-edge solutions
                       </p>
+                      <div className="icon-image-container">
+                        <img src="/assets/pastevent/WhatsApp Image 2025-03-27 at 02.29.24 (2).jpeg" alt="Technology at Triverse" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1141,23 +1201,87 @@ const Home: NextPage = () => {
           position: relative;
         }
 
-        .image-container {
+        .image-carousel {
           position: relative;
           overflow: hidden;
           border-radius: 16px;
           height: 360px;
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .about-image {
+        .image-carousel:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .carousel-images {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .carousel-image {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 1.5s ease;
+          opacity: 0;
+          transition: opacity 1.2s ease-in-out, transform 8s ease-in-out;
+          transform: scale(1.05);
+          z-index: 1;
         }
 
-        .image-container:hover .about-image {
-          transform: scale(1.05);
+        .carousel-image.active {
+          opacity: 1;
+          z-index: 2;
+          transform: scale(1);
+          animation: subtle-zoom 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes subtle-zoom {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.08);
+          }
+        }
+
+        .carousel-indicators {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 0.8rem;
+          z-index: 3;
+          background: rgba(0, 0, 0, 0.3);
+          padding: 6px 12px;
+          border-radius: 20px;
+          backdrop-filter: blur(3px);
+        }
+
+        .indicator {
+          width: 10px;
+          height: 10px;
+          background: rgba(255, 255, 255, 0.4);
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .indicator:hover {
+          background: rgba(255, 255, 255, 0.8);
+        }
+
+        .indicator.active {
+          background: #ffffff;
+          transform: scale(1.2);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         .image-overlay {
@@ -1168,10 +1292,12 @@ const Home: NextPage = () => {
           bottom: 0;
           background: linear-gradient(
             to bottom,
-            rgba(60, 20, 80, 0.2),
+            rgba(60, 20, 80, 0.1),
             rgba(60, 20, 80, 0.6)
           );
-          z-index: 1;
+          z-index: 2;
+          pointer-events: none;
+          border-radius: 16px;
         }
 
         .visual-quote {
@@ -1195,13 +1321,13 @@ const Home: NextPage = () => {
         }
 
         .pillars-section {
-          margin-top: 2rem; /* Reduced top margin */
+          margin-top: 4rem;
           position: relative;
           z-index: 2;
           text-align: center;
-          clear: both; /* Ensure it's not affected by preceding floats */
-          width: 100%; /* Full width */
-          padding: 0 1rem; /* Add some padding */
+          clear: both;
+          width: 100%;
+          padding: 0 1rem 2rem;
         }
 
         .pillars-title {
@@ -1229,10 +1355,10 @@ const Home: NextPage = () => {
 
         .about-icons {
           display: flex;
-          justify-content: center; /* Changed to center alignment */
-          flex-wrap: wrap; /* Allow wrapping on smaller screens */
-          margin-top: 2rem;
-          gap: 2rem; /* Increased gap between icons */
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-top: 2.5rem;
+          gap: 2.5rem;
           position: relative;
           z-index: 2;
         }
@@ -1241,22 +1367,26 @@ const Home: NextPage = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 1rem;
-          transition: transform 0.5s ease;
-          padding: 1.5rem;
+          gap: 0.8rem;
+          transition: transform 0.5s ease, background 0.3s ease;
+          padding: 1.8rem 1.5rem;
           border-radius: 16px;
-          width: 28%; /* Slightly reduced width */
-          min-width: 200px; /* Minimum width to maintain readability */
+          width: 28%;
+          min-width: 240px;
+          background: rgba(60, 20, 80, 0.2);
+          border: 1px solid rgba(146, 93, 161, 0.2);
+          backdrop-filter: blur(5px);
         }
 
         .icon-item:hover {
           transform: translateY(-10px);
-          background: rgba(255, 255, 255, 0.05);
+          background: rgba(146, 93, 161, 0.15);
+          border: 1px solid rgba(146, 93, 161, 0.3);
         }
 
         .icon-circle {
-          width: 90px;
-          height: 90px;
+          width: 80px;
+          height: 80px;
           border-radius: 50%;
           background: rgba(234, 142, 234, 0.15);
           display: flex;
@@ -1269,8 +1399,8 @@ const Home: NextPage = () => {
         }
 
         .icon-circle svg {
-          width: 40px;
-          height: 40px;
+          width: 35px;
+          height: 35px;
           color: rgba(255, 255, 255, 0.9);
           transition: all 0.4s ease;
         }
@@ -1292,12 +1422,44 @@ const Home: NextPage = () => {
           letter-spacing: 0.5px;
         }
 
-        .icon-description {
-          font-size: 0.95rem;
-          color: rgba(255, 255, 255, 0.7);
-          text-align: center;
-          max-width: 200px;
-          margin: 0;
+        @media (max-width: 768px) {
+          .pillars-section {
+            margin-top: 3rem;
+            padding-bottom: 2rem;
+          }
+          
+          .about-icons {
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+          }
+          
+          .icon-item {
+            width: 90%;
+            max-width: 340px;
+            padding: 1.5rem;
+            margin: 0;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .pillars-section {
+            margin-top: 2.5rem;
+          }
+          
+          .about-icons {
+            gap: 1.8rem;
+          }
+          
+          .icon-item {
+            width: 100%;
+            padding: 1.2rem 1rem;
+          }
+          
+          .icon-description {
+            font-size: 0.9rem;
+          }
         }
 
         .navigation-button-container {
@@ -1400,6 +1562,20 @@ const Home: NextPage = () => {
             position: relative;
             z-index: 10;
           }
+
+          .image-carousel {
+            height: 260px;
+          }
+          
+          .carousel-indicators {
+            bottom: 15px;
+            gap: 0.6rem;
+          }
+          
+          .indicator {
+            width: 8px;
+            height: 8px;
+          }
         }
 
         @media (max-width: 480px) {
@@ -1414,6 +1590,16 @@ const Home: NextPage = () => {
             width: 100%;
             z-index: 10;
             padding-bottom: 1rem; /* Reduced from 3rem to 1rem */
+          }
+
+          .image-carousel {
+            height: 220px;
+            width: 100%;
+          }
+          
+          .carousel-indicators {
+            bottom: 10px;
+            gap: 0.5rem;
           }
         }
 
@@ -1771,7 +1957,7 @@ const Home: NextPage = () => {
             margin: 0 auto;
           }
 
-          .image-container {
+          .image-carousel {
             height: 220px;
             width: 100%;
           }
@@ -1991,8 +2177,9 @@ const Home: NextPage = () => {
             text-align: center;
           }
 
-          .image-container {
-            height: 180px;
+          .image-carousel {
+            height: 220px;
+            width: 100%;
           }
 
           .visual-quote {
@@ -2398,6 +2585,176 @@ const Home: NextPage = () => {
             width: 100%;
             box-sizing: border-box;
             overflow: visible;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .image-carousel {
+            height: 280px;
+          }
+          
+          .carousel-indicators {
+            bottom: 15px;
+            gap: 0.6rem;
+            padding: 5px 10px;
+          }
+          
+          .indicator {
+            width: 8px;
+            height: 8px;
+          }
+          
+          .visual-quote {
+            position: relative;
+            right: auto;
+            bottom: auto;
+            margin: -25px auto 0;
+            max-width: 90%;
+            text-align: center;
+            transform: rotate(0);
+            z-index: 10;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .image-carousel {
+            height: 240px;
+            width: 100%;
+          }
+          
+          .carousel-indicators {
+            bottom: 10px;
+            gap: 0.4rem;
+            padding: 4px 8px;
+          }
+          
+          .indicator {
+            width: 6px;
+            height: 6px;
+          }
+          
+          @keyframes subtle-zoom {
+            0% {
+              transform: scale(1);
+            }
+            100% {
+              transform: scale(1.04);
+            }
+          }
+        }
+
+        /* Add CSS for the icon images */
+        .icon-image-container {
+          width: 100%;
+          height: 120px;
+          margin-top: 1rem;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .icon-image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .icon-item:hover .icon-image-container {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .icon-item:hover .icon-image-container img {
+          transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+          .icon-image-container {
+            height: 100px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .icon-image-container {
+            height: 140px;
+          }
+        }
+
+        .icon-description {
+          font-size: 0.95rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-align: center;
+          max-width: 200px;
+          margin: 0 0 0.5rem;
+          line-height: 1.5;
+        }
+
+        .event-date {
+          margin-top: 0.5rem;
+          font-size: 1.3rem;
+          color: #ea8eea;
+          font-weight: 600;
+          text-align: center;
+          letter-spacing: 1px;
+          opacity: 0;
+          animation: fadeIn 0.8s 1.5s forwards;
+          font-family: "Playfair Display", serif;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .event-date-container {
+          position: relative;
+          display: inline-block;
+          margin-top: 0.5rem;
+          overflow: hidden;
+        }
+        
+        .smoke-effect {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, 
+            rgba(146, 93, 161, 0) 0%, 
+            rgba(234, 142, 234, 0.3) 50%,
+            rgba(146, 93, 161, 0) 100%
+          );
+          filter: blur(8px);
+          z-index: 1;
+          opacity: 0;
+          transform: translateX(100%);
+          animation: smokeAnimation 4s 2s forwards;
+        }
+        
+        @keyframes smokeAnimation {
+          0% {
+            opacity: 0;
+            transform: translateX(100%);
+          }
+          10% {
+            opacity: 0.7;
+          }
+          80% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(-100%);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
       `}</style>
