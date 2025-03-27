@@ -211,17 +211,15 @@ function App() {
       title: "FinLit",
       icon: <BarChart className="icon" />,
       description:
-        "A comprehensive financial literacy competition that challenges participants to demonstrate their understanding of financial markets, investment strategies, and economic principles.",
+        "FINLIT REDEFINES FINANCE QUIZZES—PARTNERED WITH ZERODHA, IT’S A THRILLING DIVE INTO MONEY MASTERY. TACKLE REAL-WORLD SCENARIOS, ACE THOUGHT-PROVOKING QUESTIONS, AND LEARN FROM EXPERTS. PERFECT FOR FINANCE ENTHUSIASTS OR CURIOUS MINDS, IT’S YOUR CHANCE TO COMPETE AND GROW. READY TO LEVEL UP? LET’S BEGIN!",
       highlights: [
-        "Market simulation challenges",
-        "Investment strategy competitions",
-        "Financial case studies",
-        "Expert panel discussions",
+        "Where Curiosity Meets Currency—Dive into FINLIT! ",
+        "FINLIT: Finance, But Way Cooler!",
       ],
       date: "March 27, 2025",
       time: "5:30 PM",
       venue: "ALH 002",
-      variant: "purple", // Adding variant for PixelCard
+      variant: "purple",
       registrationUrl: "https://forms.gle/534XMo5YDYeVfpuC8",
     },
     {
@@ -229,12 +227,11 @@ function App() {
       title: "Bet for Tech",
       icon: <Cpu className="icon" />,
       description:
-        "An innovative tech betting platform where participants predict future technology trends and developments. Compete to forecast the next big innovations in the tech industry.",
+      "UNLOCK TECH STACKS WITH TOKENS! CRACK CODES, OUTSMART RIVALS, AND MASTER THE ART OF DECEPTION. FACE A SERIES OF THRILLING CHALLENGES DESIGNED TO TEST YOUR SKILLS AND REWARD YOUR BRILLIANCE.WITH UNEXPECTED TWISTS AT EVERY TURN, ONLY THE SHARPEST WILL PREVAIL. ARE YOU READY TO OUTPLAY, OUTTHINK, AND OUTLAST? THE GAME AWAITS!",
       highlights: [
-        "Tech trend analysis",
-        "Innovation forecasting",
-        "Industry expert insights",
-        "Predictive modeling challenges",
+        "High Stakes, Higher IQ!",
+        "Risk it Right, Rule the Night!",
+
       ],
       date: "March 28, 2025",
       time: "5:30 PM",
@@ -248,12 +245,9 @@ function App() {
       title: "Code Roast",
       icon: <Code className="icon" />,
       description:
-        "A collaborative code review session where experts analyze and critique your code in a constructive environment. Get valuable feedback on your projects and improve your coding skills.",
+        "CodeRoast is a thrilling showdown where teams dissect, critique, and improve each other’s code under pressure. With a mix of logic, wit, and a dash of humor, participants will sharpen their debugging skills while embracing the chaos of coding. Think you can roast bad code and make it better? Step up and prove it!",
       highlights: [
-        "Live code reviews",
-        "Expert feedback",
-        "Best practices discussion",
-        "Performance optimization tips",
+      "Debug, Roast, Conquer! ",
       ],
       date: "March 28, 2025",
       time: "7:00 PM onwards",
